@@ -30,6 +30,7 @@ class OrdersController extends Controller
             'deliverDate' => $request['deliverDate'],
             'open' => true,
         ]);
+
         return redirect()->route('orders.show', $order->id );
     }
 
@@ -39,7 +40,6 @@ class OrdersController extends Controller
         $order = Orders::find($id);
         //para algunos pedidos detalles no funciona el $company, da null//
         $company = Company::find($order->companyId);
-        dd($company);
         $ordersArticles = OrdersArticles::where('orderId', $id)->get();
         foreach ($ordersArticles as $ordersArticle){
             $article =Article::find($ordersArticle->articleId);

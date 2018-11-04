@@ -23,7 +23,7 @@
                     <td>pedidos{{ $ordersArticle->number }}</td>
 
                     @if($orders->open && $orders->deliverDate > now()->format('d-m-Y'))
-                        <td>quedan{{ $articles =$ordersArticle->stock - $ordersArticle->number }}</td>
+                        <td>quedan{{ $articles =$ordersArticle->stock }}</td>
                     @endif
 
                     <td>precio:{{ $ordersArticle->price }}€</td>

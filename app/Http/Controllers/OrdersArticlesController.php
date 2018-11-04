@@ -18,11 +18,18 @@ class OrdersArticlesController extends Controller
 
     public function store(Request $request, $articleId, $ordersId)
     {
+        if ($ordersArticles = OrdersArticles::where('articleId', $articleId )->where('orderId', $ordersId)->first()){
+            return redirect()->route('ordersArticles.plusLess', [$ordersArticles->id, $ordersArticles->number, $ordersId, 'plus']);
+        }
         OrdersArticles::create([
             'articleId' => $articleId,
             'orderId' => $ordersId,
             'number' => $request['number'],
         ]);
+
+        $article = Article::find($articleId);
+        $article->stock -= $request['number'];
+        $article->save();
 
         $company = Orders::find($ordersId);
 
@@ -42,7 +49,7 @@ class OrdersArticlesController extends Controller
             $orderArticle->save();
         }
         if ($orderArticle->number<=0){
-            $orderArticle->delete();
+            return redirect()->route('ordersArticles.delete',[$id, $ordersId]);
         }
         return redirect()->route('orders.show', $ordersId);
 
@@ -50,7 +57,13 @@ class OrdersArticlesController extends Controller
     public function delete($id, $ordersId)
     {
         $ordersArticles = OrdersArticles::find($id);
+
+        $article = Article::find($ordersArticles->articleId);
+        $article->stock += $ordersArticles->number;
+        $article->save();
+
         $ordersArticles->delete();
+
         return redirect()->route('orders.show', $ordersId);
     }
 
