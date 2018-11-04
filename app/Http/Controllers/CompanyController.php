@@ -58,7 +58,7 @@ class CompanyController extends Controller
     {
 
         $company = Company::where('id','=', $id)->first();
-
+        
         $company->delete();
 
         return redirect()->route('company');

@@ -18,8 +18,9 @@ class OrdersArticlesController extends Controller
 
     public function store(Request $request, $articleId, $ordersId)
     {
+        //si ya existe un orderarticle se lo suma
         if ($ordersArticles = OrdersArticles::where('articleId', $articleId )->where('orderId', $ordersId)->first()){
-            return redirect()->route('ordersArticles.plusLess', [$ordersArticles->id, $ordersArticles->number, $ordersId, 'plus']);
+            return redirect()->route('ordersArticles.plusLess', [$ordersArticles->id, $request['number'], $ordersId, 'plus']);
         }
         OrdersArticles::create([
             'articleId' => $articleId,

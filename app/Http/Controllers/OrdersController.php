@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
-    public function index($id)
-    {   $company = Company::find($id);
-        $orderss = Orders::where('userId','=', Auth::id())->get();
+    public function index($companyId)
+    {   $company = Company::find($companyId);
+        $orderss = Orders::where('companyId',$companyId)->get() ;
         return view('clients.orders.index', ['orderss' => $orderss, 'company' => $company]);
     }
 
@@ -38,7 +38,6 @@ class OrdersController extends Controller
     {
         $articles = [];
         $order = Orders::find($id);
-        //para algunos pedidos detalles no funciona el $company, da null//
         $company = Company::find($order->companyId);
         $ordersArticles = OrdersArticles::where('orderId', $id)->get();
         foreach ($ordersArticles as $ordersArticle){

@@ -16,7 +16,7 @@ class CreateOrdersArticlesTable extends Migration
         Schema::create('orders_Articles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('articleId');
-            $table->foreign('articleId')->references('id')->on('articles')->onDelete('cascade');
+            $table->foreign('articleId')->references('id')->on('articles');
             $table->unsignedInteger('orderId');
             $table->foreign('orderId')->references('id')->on('orders')->onDelete('cascade');
             $table->string('number');
