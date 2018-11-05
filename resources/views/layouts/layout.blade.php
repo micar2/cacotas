@@ -20,14 +20,14 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
+    <script src="{{ asset('js/modernizr.js') }}"></script>
+    <script src="{{ asset('js/pace.min.js') }}"></script>
 
     <!-- favicons
     ================================================== -->
@@ -236,9 +236,9 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 
 </body>
 
