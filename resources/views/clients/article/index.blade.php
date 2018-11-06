@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-
+@include('layouts.search')
     <dic class="container">
         <div class="row">
             @foreach($articles as $article)

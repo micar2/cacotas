@@ -86,6 +86,10 @@ Route::get('ordersArticles/create/{ordersId}', 'OrdersArticlesController@create'
 
 Route::post('ordersArticles/store/{articleId}/{ordersId}', 'OrdersArticlesController@store')->name('ordersArticles.store');
 
+//search
+
+Route::post('search/{ordersId}', 'ArticleController@search')->name('search');
+
 // mail
 
 Route::get('sendemail',function(){
