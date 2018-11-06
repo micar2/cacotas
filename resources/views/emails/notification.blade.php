@@ -1,6 +1,11 @@
-@extends('layouts.layout')
-@section('content')
-
-    Visita mi web <a href="{{ $link }}">{{ $link }}</a> para ver muchos más tutoriales.
-
-    @endsection
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Pedido Realizado</title>
+</head>
+<body>
+Buenos dias {{ $userName }}. <br>
+El pedido {{ $orders }} de {{ $companyName }} ha sido guardado
+</body>
+</html>

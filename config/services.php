@@ -20,8 +20,8 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
-        'secret' => env('SES_SECRET'),
+        'key' => env('smtp.mailtrap.io'),
+        'secret' => env('c721a9c80327ec'),
         'region' => env('SES_REGION', 'us-east-1'),
     ],
 

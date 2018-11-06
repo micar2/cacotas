@@ -8,6 +8,8 @@ use App\Orders;
 use App\OrdersArticles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\TestMail;
+
 
 class OrdersController extends Controller
 {
@@ -66,6 +68,9 @@ class OrdersController extends Controller
         $orders = Orders::find($id);
         $orders->open = false;
         $orders->save();
+
+
+        Orders::orderSave($orders);
 
         return redirect()->route('orders.show', $id );
     }

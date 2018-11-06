@@ -13,6 +13,7 @@
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 //Route::get('/', function () {
 //    $rol = User::where('id', '=', Auth::id())->first();
@@ -87,14 +88,16 @@ Route::post('ordersArticles/store/{articleId}/{ordersId}', 'OrdersArticlesContro
 
 // mail
 
-Route::get('enviar',function(){
+Route::get('sendemail',function(){
     $data = [
+        'name' => 'cacotas',
         'link' => 'http://jesuschicano.es'
     ];
 
-    \Mail::send('emails.notificacion', $data, function($msg){
+    Mail::send('emails.notification', $data, function($msg){
         $msg->from('c4c0t4s@gmail.com', 'Pato Cuack');
         $msg->to('munar2@hotmail.com')->subject('Notificación');
     });
+    return 'el email ha sido enviado';
 }
 );
