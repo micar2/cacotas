@@ -84,3 +84,17 @@ Route::get('ordersArticles/plus/{id}/{number}/{ordersId}/{operation}', 'OrdersAr
 Route::get('ordersArticles/create/{ordersId}', 'OrdersArticlesController@create')->name('ordersArticles.create');
 
 Route::post('ordersArticles/store/{articleId}/{ordersId}', 'OrdersArticlesController@store')->name('ordersArticles.store');
+
+// mail
+
+Route::get('enviar',function(){
+    $data = [
+        'link' => 'http://jesuschicano.es'
+    ];
+
+    \Mail::send('emails.notificacion', $data, function($msg){
+        $msg->from('c4c0t4s@gmail.com', 'Pato Cuack');
+        $msg->to('munar2@hotmail.com')->subject('Notificación');
+    });
+}
+);

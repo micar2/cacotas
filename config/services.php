@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('smtp.mailtrap.io'),
+        'secret' => env('c721a9c80327ec'),
     ],
 
     'ses' => [
@@ -26,7 +26,10 @@ return [
     ],
 
     'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
+        'secret' => env('Basic 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf'),
+        'options' => [
+            'endpoint' => 'https://api.eu.sparkpost.com/api/v1/transmissions',
+        ],
     ],
 
     'stripe' => [

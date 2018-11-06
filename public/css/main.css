@@ -59,6 +59,15 @@
  * # base style overrides
  *
  * ------------------------------------------------------------------- */
+
+.pagination{
+    text-align: center;
+}
+.pagination li{
+
+    display: inline;
+}
+/*-----------------------------------------*/
 html {
     font-size: 10px;
 }

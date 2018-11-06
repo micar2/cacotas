@@ -11,7 +11,7 @@ class OrdersArticlesController extends Controller
 {
     public function create($id)
     {
-        $articles = Article::orderBy('name', 'asc')->take(20)->get();
+        $articles = Article::orderBy('name', 'asc')->paginate(12);
         $count = Article::all()->count();
         return view('clients.article.index',['ordersId' => $id, 'count' => $count, 'articles' =>$articles]);
     }

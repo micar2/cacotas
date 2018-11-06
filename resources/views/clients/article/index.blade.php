@@ -24,6 +24,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="row pagination">
+            {{ $articles->links() }}
+        </div>
     </dic>
 
     @endsection
