@@ -13,6 +13,7 @@ class OrdersArticlesController extends Controller
     {
         $articles = Article::orderBy('name', 'asc')->paginate(12);
         $count = Article::all()->count();
+
         return view('clients.article.index',['ordersId' => $id, 'count' => $count, 'articles' =>$articles]);
     }
 

@@ -9,8 +9,11 @@ class ArticleController extends Controller
 {
     public function search(Request $request , $ordersId)
     {
+
         if ($request['selection']=='name'){
-            $articles=Article::where('name','LIKE','%'.$request['text'].'%')->orderBy('name', 'asc')->paginate(12);
+            $articles=Article::paginate('articles', 'name',$request['text']);
+            dd($articles);
+            //$articles=Article::where('name','LIKE','%'.$request['text'].'%')->orderBy('name', 'asc')->paginate(12);
         }
         if ($request['selection']=='description'){
             $articles=Article::where('description','LIKE','%'.$request['text'].'%')->orderBy('name', 'asc')->paginate(12);
