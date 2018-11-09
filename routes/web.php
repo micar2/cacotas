@@ -86,7 +86,9 @@ Route::get('ordersArticles/create/{ordersId}', 'OrdersArticlesController@create'
 
 Route::post('ordersArticles/store/{articleId}/{ordersId}', 'OrdersArticlesController@store')->name('ordersArticles.store');
 
-//search
+//Article
+
+Route::get('pagination/{articles}/{ordersId}','ArticleController@pagination')->name('article.pagination');
 
 Route::post('search/{ordersId}', 'ArticleController@search')->name('search');
 
