@@ -16,6 +16,13 @@ class OrdersArticlesController extends Controller
 
         return view('clients.article.index',['ordersId' => $id, 'count' => $count, 'articles' =>$articles]);
     }
+//    public function create($id)
+//    {
+//        $articles = Article::orderBy('name', 'asc')->paginate(12);
+//        $count = Article::all()->count();
+//
+//        return view('clients.article.index',['ordersId' => $id, 'count' => $count, 'articles' =>$articles]);
+//    }
 
     public function store(Request $request, $articleId, $ordersId)
     {

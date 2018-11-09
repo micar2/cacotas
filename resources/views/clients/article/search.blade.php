@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-@include('layouts.search')
+    @include('layouts.search')
     <dic class="container">
         <div class="row">
             @foreach($articles as $article)
@@ -24,7 +24,24 @@
                 </div>
             @endforeach
         </div>
-        {{ $articles->links() }}
+        @if($count>1)
+            <div class="row pagination">
+                <ul class="pagination" role="navigation">
+                    <li class="page-item">
+                        <a class="page-link" href="http://realtfc.test/ordersArticles/create/1010?page=1" rel="prev" aria-label="« Previous"><</a>                </li>
+                    @for($i=1, $i<=($count/count($articles)),$i++)
+                        <li class="page-item">
+                            <a class="page-link" href="http://realtfc.test/ordersArticles/create/{{  }}" rel="previous" aria-label="Previous »">{{ $i }}</a>
+                        </li>
+
+
+                    @endfor
+                    <li class="page-item">
+                        <a class="page-link" href="http://realtfc.test/ordersArticles/create/1010?page=2" rel="next" aria-label="Next »">></a>
+                    </li>
+                </ul>
+            </div>
+        @endif
     </dic>
 
-    @endsection
+@endsection

@@ -22,6 +22,11 @@ class ArticleController extends Controller
 ////        }
 //        $count = $articles->count();
 
-        return view('clients.article.index',['ordersId' => $ordersId, 'count' => $articles['count'], 'articles' =>$articles['items']]);
+        return view('clients.article.search',['ordersId' => $ordersId, 'count' => $articles['count'], 'articles' =>$articles['items']]);
+    }
+    public function pagination($camp,$data,$howMany,$page,$ordersId)
+    {
+        $articles=Article::paginate('articles',$camp,$data,$howMany,$page);
+        return view('clients.article.search',['ordersId' => $ordersId, 'count' => $articles['count'], 'articles' =>$articles['items']]);
     }
 }
