@@ -18,7 +18,7 @@ class Article extends Model
         $items = DB::table($table)->where($camp, 'LIKE', '%'.$data.'%')->take($howMany)->skip($skip)->get();
         $count= DB::table($table)->where($camp, 'LIKE', '%'.$data.'%')->count();
         if ($count+$howMany-1 < $howMany*$page){
-            return 
+            return false;
         }
 
         return ['count'=>$count,'items'=>$items];
