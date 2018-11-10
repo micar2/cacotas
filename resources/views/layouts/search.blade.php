@@ -9,7 +9,7 @@
                             {{--<span class="glyphicon glyphicon-search"></span>--}}
                         {{--</button>--}}
                     {{--</span>--}}
-                    {!! Form::open(['route' => ['search', $ordersId], 'method' => 'Post']) !!}
+                    {!! Form::open(['route' => ['search', $ordersId,1], 'method' => 'Post']) !!}
                     <div class="form-group col-sm-6">
                         {!! Form::label('selection', 'Buscar por:') !!}
                         {!! Form::select('selection', ['name' => 'Nombre', 'description' => 'Descripción']) !!}

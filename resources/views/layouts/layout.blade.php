@@ -29,6 +29,7 @@
     <script src="{{ asset('js/modernizr.js') }}"></script>
     <script src="{{ asset('js/pace.min.js') }}"></script>
 
+
     <!-- favicons
     ================================================== -->
     <link rel="shortcut icon" href="svg/favicon.ico" type="image/x-icon">
