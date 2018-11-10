@@ -60,6 +60,8 @@ Route::post('company/update/{id}', 'CompanyController@update')->name('company.up
 
 Route::get('company/delete/{id}', 'CompanyController@delete')->name('company.delete');
 
+Route::get('company/debt/{id}', 'CompanyController@debt')->name('company.debt');
+
 //crud orders
 
 Route::get('orders/{companyId}', 'OrdersController@index')->name('orders');

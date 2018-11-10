@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $company->name }}</h5>
                     <h5 class="card-title">{{ $company->telephone }}</h5>
+                    <h5 class="card-title">acumulado:{{ $company->debt }}€</h5>
                     <h5 class="card-title">{{ $company->email }}</h5>
                     <a href="{{ route( 'orders' , $company->id ) }}">Pedidos</a>
                     <a href="{{ route( 'company.change' , $company->id ) }}">modificar</a>

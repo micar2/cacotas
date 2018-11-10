@@ -15,6 +15,16 @@ class Orders extends Model
          'companyId', 'deliverDate'
     ];
 
+    public function OrdersArticles()
+    {
+        return $this->hasMany(OrdersArticles::class,'orderId');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'companyId');
+    }
+
     static function orderSave($orders)
     {
         $company = Company::find($orders->companyId);

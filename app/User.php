@@ -31,4 +31,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function Company()
+    {
+        return $this->hasMany(Company::class,'userId');
+    }
 }

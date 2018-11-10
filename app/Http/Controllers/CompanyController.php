@@ -66,5 +66,10 @@ class CompanyController extends Controller
 
     }
 
+    public function debt($id)
+    {
+
+    }
+
 
 }

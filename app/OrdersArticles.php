@@ -13,4 +13,14 @@ class OrdersArticles extends Model
     protected $fillable = [
         'number', 'orderId', 'articleId'
     ];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class, 'articleId');
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Orders::class, 'orderId');
+    }
 }

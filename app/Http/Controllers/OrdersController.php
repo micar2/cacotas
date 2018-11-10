@@ -69,8 +69,8 @@ class OrdersController extends Controller
         $orders->open = false;
         $orders->save();
 
-
-        Orders::orderSave($orders);
+        Company::calcDebt($id);
+        //Orders::orderSave($orders);
 
         return redirect()->route('orders.show', $id );
     }

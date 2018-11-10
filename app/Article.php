@@ -11,6 +11,11 @@ class Article extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
+    public function OrdersArticles()
+    {
+        return $this->hasMany(OrdersArticles::class,'articleId');
+    }
+
     static function paginate($table,$camp,$data,$howMany=10,$page=1)
     {
 
