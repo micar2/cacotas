@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Company;
 use App\Orders;
 use App\OrdersArticles;
 use Illuminate\Http\Request;
@@ -40,8 +41,9 @@ class OrdersArticlesController extends Controller
         $article->stock -= $request['number'];
         $article->save();
 
-        $company = Orders::find($ordersId);
+        $company = Company::find($ordersId);
 
+        Orders::calcTotal($ordersId);
 
         return redirect()->route('orders.show', $company->id );
     }
@@ -55,11 +57,12 @@ class OrdersArticlesController extends Controller
         }
         if ($operation=='less'){
             $orderArticle->number -= $number;
+            if ($orderArticle->number<=0){
+                return redirect()->route('ordersArticles.delete',[$id, $ordersId]);
+            }
             $orderArticle->save();
         }
-        if ($orderArticle->number<=0){
-            return redirect()->route('ordersArticles.delete',[$id, $ordersId]);
-        }
+        Orders::calcTotal($id);
         return redirect()->route('orders.show', $ordersId);
 
     }
@@ -72,7 +75,7 @@ class OrdersArticlesController extends Controller
         $article->save();
 
         $ordersArticles->delete();
-
+        Orders::calcTotal($id);
         return redirect()->route('orders.show', $ordersId);
     }
 

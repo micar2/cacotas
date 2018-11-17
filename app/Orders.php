@@ -51,7 +51,12 @@ class Orders extends Model
             ->join('articles','orders_articles.articleId','=','articles.id')
             ->select(DB::raw('SUM(orders_articles.number*articles.price) as total'))->first();
         $total = $order->total;
-        return $total;
+
+        $orders = Orders::find($id);
+        $orders->debt = $total;
+        $orders->save();
+
+        return true;
     }
     //cambiarlo con una buena peticion
     static function getArticles($id)

@@ -58,7 +58,7 @@ class OrdersController extends Controller
     {
 
         $orders = Orders::find($id);
-        $orders->total = Orders::calcTotal($id);
+        Orders::calcTotal($id);
         $orders->open = false;
         Company::calcDebt($orders->companyId);
         $orders->save();
