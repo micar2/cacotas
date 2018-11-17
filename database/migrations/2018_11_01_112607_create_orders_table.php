@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('companyId');
             $table->foreign('companyId')->references('id')->on('companies')->onDelete('cascade');
             $table->string('deliverDate');
+            $table->string('total')->default(0);
             $table->boolean('charged')->default(false);
             $table->boolean('open')->default(true);
             $table->softDeletes();

@@ -41,16 +41,7 @@ class OrdersController extends Controller
         $articles = [];
         $order = Orders::find($id);
         $company = Company::find($order->companyId);
-        $ordersArticles = OrdersArticles::where('orderId', $id)->get();
-        foreach ($ordersArticles as $ordersArticle){
-            $article =Article::find($ordersArticle->articleId);
-            $camps = array_keys($article->toArray());
-            foreach ($camps as $camp){
-                if ($camp != 'id' || $camp != 'deleted_at'|| $camp != 'created_at'|| $camp != 'updated_at'){
-                    $ordersArticle = array_add($ordersArticle, $camp, $article->$camp);
-                }
-            }
-        }
+        $ordersArticles = Orders::getArticles($id);
         return view('clients.orders.show',['orders' => $order, 'ordersArticles'=>$ordersArticles, 'company' => $company]);
     }
 
@@ -65,12 +56,14 @@ class OrdersController extends Controller
 
     public function update($id)
     {
+
         $orders = Orders::find($id);
+        $orders->total = Orders::calcTotal($id);
         $orders->open = false;
+        Company::calcDebt($orders->companyId);
         $orders->save();
 
-        Company::calcDebt($id);
-        //Orders::orderSave($orders);
+        Orders::orderSave($orders);
 
         return redirect()->route('orders.show', $id );
     }

@@ -24,20 +24,19 @@ class Company extends Model
         return $this->belongsTo(User::class, 'userId');
     }
 
-    static function calcDebt ($orderId)
+    static function calcDebt ($id)
     {
-        $company = Orders::find($orderId)->company;
-        $orders = $company->orders;
-        $orders2 = Orders::where('companyId',$company->id)->get();
-        $total = Orders::where('orders.id', $orderId)
-            ->join('orders_articles','orders.id','=','orders_articles.orderId')
-            ->join('articles','orders_articles.articleId','=','articles.id')
-            ->select(DB::raw('SUM(orders_articles.number*articles.price)'))->get();
-        dd($total,$company,$orders,$orders2);
-        $orders = Orders::where('charged', false)->where('companyId', $company->id)->get();
+        $companyDebt = Company::where('companies.id','=',$id)->join('orders', 'companies.id','=','orders.companyId')
+            ->where('orders.charged','=',false)
+            ->where('orders.open','=',false)
+            ->select(DB::raw('SUM(orders.total) as debt'))->first();
+        $debt = $companyDebt->debt;
 
+        $company = Company::find($id);
+        $company->debt = $debt;
+        $company->save();
 
-
+        return true;
     }
 
 }

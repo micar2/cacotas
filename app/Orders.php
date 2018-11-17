@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class Orders extends Model
@@ -41,5 +42,30 @@ class Orders extends Model
             $msg->to($data['email'])->subject('Pedido realizado');
         });
 
+    }
+
+    static function calcTotal($id)
+    {
+        $order = Orders::where('orders.id', $id)
+            ->join('orders_articles','orders.id','=','orders_articles.orderId')
+            ->join('articles','orders_articles.articleId','=','articles.id')
+            ->select(DB::raw('SUM(orders_articles.number*articles.price) as total'))->first();
+        $total = $order->total;
+        return $total;
+    }
+    //cambiarlo con una buena peticion
+    static function getArticles($id)
+    {
+        $ordersArticles = OrdersArticles::where('orderId', $id)->get();
+        foreach ($ordersArticles as $ordersArticle){
+            $article =Article::find($ordersArticle->articleId);
+            $camps = array_keys($article->toArray());
+            foreach ($camps as $camp){
+                if ($camp != 'id' || $camp != 'deleted_at'|| $camp != 'created_at'|| $camp != 'updated_at'){
+                    $ordersArticle = array_add($ordersArticle, $camp, $article->$camp);
+                }
+            }
+        }
+        return $ordersArticles;
     }
 }
