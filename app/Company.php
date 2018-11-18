@@ -11,7 +11,7 @@ class Company extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'name', 'email', 'address', 'telephone', 'debt','schedule', 'userId', 'open'
+        'name', 'email', 'address', 'telephone', 'debt','schedule', 'userId'
     ];
 
     public function Orders()

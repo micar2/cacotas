@@ -42,7 +42,6 @@ class CompanyController extends Controller
 
     public function update(Request $request,$id)
     {
-
         $company = Company::where('id','=', $id)->first();
 
         if ($company) {
@@ -56,18 +55,10 @@ class CompanyController extends Controller
 
     public function delete($id)
     {
-
-        $company = Company::where('id','=', $id)->first();
-        
+        $company = Company::find($id);
         $company->delete();
 
         return redirect()->route('company');
-
-
-    }
-
-    public function debt($id)
-    {
 
     }
 

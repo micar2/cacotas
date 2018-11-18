@@ -45,54 +45,63 @@ Route::post('login', 'Auth\LoginController@getin')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 //---------client-----------//
+Auth::routes();
 
-//crud company
+Route::group([
+    'middleware' => 'rol:client'
+], function () {
 
-Route::get('company', 'CompanyController@index')->name('company');
+    //crud company
 
-Route::get('company/create', 'CompanyController@create')->name('company.create');
+    Route::get('company', 'CompanyController@index')->name('company');
 
-Route::post('company/store', 'CompanyController@store')->name('company.store');
+    Route::get('company/create', 'CompanyController@create')->name('company.create');
 
-Route::get('company/change/{id}', 'CompanyController@change')->name('company.change');
+    Route::post('company/store', 'CompanyController@store')->name('company.store');
 
-Route::post('company/update/{id}', 'CompanyController@update')->name('company.update');
+    Route::get('company/change/{id}', 'CompanyController@change')->name('company.change');
 
-Route::get('company/delete/{id}', 'CompanyController@delete')->name('company.delete');
+    Route::post('company/update/{id}', 'CompanyController@update')->name('company.update');
 
-Route::get('company/debt/{id}', 'CompanyController@debt')->name('company.debt');
+    Route::get('company/delete/{id}', 'CompanyController@delete')->name('company.delete');
+
+    Route::get('company/debt/{id}', 'CompanyController@debt')->name('company.debt');
 
 //crud orders
 
-Route::get('orders/{companyId}', 'OrdersController@index')->name('orders');
+    Route::get('orders/{companyId}', 'OrdersController@index')->name('orders');
 
-Route::get('orders/show/{id}', 'OrdersController@show')->name('orders.show');
+    Route::get('orders/show/{id}', 'OrdersController@show')->name('orders.show');
 
-Route::get('orders/create/{companyId}', 'OrdersController@create')->name('orders.create');
+    Route::get('orders/create/{companyId}', 'OrdersController@create')->name('orders.create');
 
-Route::post('orders/store/{companyId}', 'OrdersController@store')->name('orders.store');
+    Route::post('orders/store/{companyId}', 'OrdersController@store')->name('orders.store');
 
-Route::get('orders/change/{id}', 'OrdersController@change')->name('orders.change');
+    Route::get('orders/change/{id}', 'OrdersController@change')->name('orders.change');
 
-Route::get('orders/update/{id}', 'OrdersController@update')->name('orders.update');
+    Route::get('orders/update/{id}', 'OrdersController@update')->name('orders.update');
 
-Route::get('orders/delete/{id}/{companyId}', 'OrdersController@delete')->name('orders.delete');
+    Route::get('orders/delete/{id}/{companyId}', 'OrdersController@delete')->name('orders.delete');
 
 // ordersArticle
 
-Route::get('ordersArticles/delete/{id}/{ordersId}', 'OrdersArticlesController@delete')->name('ordersArticles.delete');
+    Route::get('ordersArticles/delete/{id}/{ordersId}', 'OrdersArticlesController@delete')->name('ordersArticles.delete');
 
-Route::get('ordersArticles/plus/{id}/{number}/{ordersId}/{operation}', 'OrdersArticlesController@plusLess')->name('ordersArticles.plusLess');
+    Route::get('ordersArticles/plus/{id}/{number}/{ordersId}/{operation}', 'OrdersArticlesController@plusLess')->name('ordersArticles.plusLess');
 
-Route::get('ordersArticles/create/{ordersId}', 'OrdersArticlesController@create')->name('ordersArticles.create');
+    Route::get('ordersArticles/create/{ordersId}', 'OrdersArticlesController@create')->name('ordersArticles.create');
 
-Route::post('ordersArticles/store/{articleId}/{ordersId}', 'OrdersArticlesController@store')->name('ordersArticles.store');
+    Route::post('ordersArticles/store/{articleId}/{ordersId}', 'OrdersArticlesController@store')->name('ordersArticles.store');
 
 //Article
 
 //Route::get('pagination/{articles}/{ordersId}','ArticleController@pagination')->name('article.pagination');
 
-Route::post('search/{ordersId}/{page}', 'ArticleController@search')->name('search');
+    Route::post('search/{ordersId}/{page}', 'ArticleController@search')->name('search');
+
+});
+
+
 
 // mail
 
