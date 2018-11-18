@@ -1,27 +1,9 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-//Route::get('/', function () {
-//    $rol = User::where('id', '=', Auth::id())->first();
-//    if ($rol->rol=='admin'){
-//        return view('admin.welcome');
-//    }
-//    return view('welcome');
-//})->name('home');
 Route::get('/', function(){
     return view('welcome');
 })->name('welcome');
@@ -47,7 +29,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 //---------client-----------//
 
 Route::group([
-    'middleware' => 'rol:client'
+    'middleware' => ['auth','rol:client']
 ], function () {
 
     //crud company
@@ -97,6 +79,24 @@ Route::group([
 //Route::get('pagination/{articles}/{ordersId}','ArticleController@pagination')->name('article.pagination');
 
     Route::post('search/{ordersId}/{page}', 'ArticleController@search')->name('search');
+
+});
+
+//---------admin-----------//
+
+Route::group([
+    'middleware' => ['auth','rol:admin'],
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
+], function () {
+
+    Route::get('admin', function(){
+        return view('admin.welcome');
+    })->name('welcome');
+
+    //crud company
+
+    Route::get('company', 'CompanyController@index')->name('admin.company.show');
 
 });
 
