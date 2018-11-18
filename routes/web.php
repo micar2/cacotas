@@ -45,7 +45,6 @@ Route::post('login', 'Auth\LoginController@getin')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 //---------client-----------//
-Auth::routes();
 
 Route::group([
     'middleware' => 'rol:client'
