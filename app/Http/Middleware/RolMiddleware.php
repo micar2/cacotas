@@ -17,7 +17,7 @@ class RolMiddleware
     public function handle($request, Closure $next, $rol)
     {
 
-        if ($request->user()->rol!=$rol)
+        if ($request->user()->rol!=$rol|| empty($request) )
         {
             return view('welcome');
         }
