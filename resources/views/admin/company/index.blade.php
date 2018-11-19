@@ -74,6 +74,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                            {{ $companies->links() }}
                         </div>
                         <!-- /.box-body -->
                     </div>
