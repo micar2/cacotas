@@ -96,7 +96,15 @@ Route::group([
 
     //crud company
 
-    Route::get('company', 'CompanyController@index')->name('admin.company.show');
+    Route::get('companies', 'CompanyController@index')->name('admin.companies.show');
+
+    Route::get('articles', 'ArticleController@index')->name('admin.articles.show');
+
+    Route::get('orders', 'OrdersController@index')->name('admin.orders.show');
+
+    Route::get('ordersArticles', 'OrdersArticlesController@index')->name('admin.ordersArticles.show');
+
+    Route::get('users', 'UsersController@index')->name('admin.users.show');
 
 });
 

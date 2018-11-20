@@ -154,6 +154,8 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\IndexViewsServiceProvider::class,
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -211,6 +213,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Index' => App\Providers\IndexViewsServiceProvider::class,
 
     ],
 

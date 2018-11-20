@@ -26,7 +26,7 @@
 
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Compañias</span>
                     <span class="pull-right-container">
@@ -34,7 +34,72 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="{{ route('admin.company.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li class="active"><a href="{{ route('admin.companies.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Articulos</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="{{ route('admin.articles.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Gestion</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Pedidos</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="{{ route('admin.orders.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Detalles de Pedidos</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="{{ route('admin.ordersArticles.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
+                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Usuarios</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="{{ route('admin.users.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
                     <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
                 </ul>
             </li>

@@ -6,13 +6,13 @@ use App\Admin\Genaral;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CompanyController extends Controller
+class ArticleController extends Controller
 {
     public function index()
     {
-        $all = Genaral::index('companies');
-        $table='Compañias';
-        $route='companies';
+        $all = Genaral::index('articles');
+        $table='Articulos';
+        $route='articles';
         return view('admin.layouts.generalViewIndex', ['route'=>$route,'companies' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
     }
 }
