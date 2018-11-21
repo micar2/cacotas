@@ -13,6 +13,6 @@ class ManagementController extends Controller
         $all = Genaral::index('managements');
         $table='Gestión';
         $route='managements';
-        return view('admin.layouts.generalViewIndex', ['route'=>$route,'companies' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
+        return view('admin.layouts.generalViewIndex', ['route'=>$route,'items' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
     }
 }

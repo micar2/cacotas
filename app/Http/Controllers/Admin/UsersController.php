@@ -13,6 +13,6 @@ class UsersController extends Controller
         $all = Genaral::index('users');
         $table='Usuarios';
         $route='users';
-        return view('admin.layouts.generalViewIndex', ['route'=>$route,'companies' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
+        return view('admin.layouts.generalViewIndex', ['route'=>$route,'items' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
     }
 }

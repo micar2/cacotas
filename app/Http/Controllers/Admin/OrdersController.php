@@ -13,6 +13,6 @@ class OrdersController extends Controller
         $all = Genaral::index('orders');
         $table='Pedidos';
         $route='orders';
-        return view('admin.layouts.generalViewIndex', ['route'=>$route,'companies' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
+        return view('admin.layouts.generalViewIndex', ['route'=>$route,'items' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
     }
 }

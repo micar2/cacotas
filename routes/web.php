@@ -94,17 +94,35 @@ Route::group([
         return view('admin.welcome');
     })->name('welcome');
 
-    //crud company
+    //crud companies
 
     Route::get('companies', 'CompanyController@index')->name('admin.companies.show');
+    Route::put('companies/change/{id}', 'CompanyController@change')->name('admin.companies.change');
+    Route::post('companies/delete/{id}', 'CompanyController@delete')->name('admin.companies.delete');
+
+    //crud articles
 
     Route::get('articles', 'ArticleController@index')->name('admin.articles.show');
+    Route::post('articles/change/{id}', 'ArticleController@change')->name('admin.articles.change');
+    Route::post('articles/delete/{id}', 'ArticleController@delete')->name('admin.articles.delete');
+
+    //crud orders
 
     Route::get('orders', 'OrdersController@index')->name('admin.orders.show');
+    Route::post('orders/change/{id}', 'OrdersController@change')->name('admin.orders.change');
+    Route::post('orders/delete/{id}', 'OrdersController@delete')->name('admin.orders.delete');
+
+    //crud ordersArticles
 
     Route::get('ordersArticles', 'OrdersArticlesController@index')->name('admin.ordersArticles.show');
+    Route::post('ordersArticles/change/{id}', 'OrdersArticlesController@change')->name('admin.ordersArticles.change');
+    Route::post('ordersArticles/delete/{id}', 'OrdersArticlesController@delete')->name('admin.ordersArticles.delete');
+
+    //crud users
 
     Route::get('users', 'UsersController@index')->name('admin.users.show');
+    Route::post('users/change/{id}', 'UsersController@change')->name('admin.users.change');
+    Route::post('users/delete/{id}', 'UsersController@delete')->name('admin.users.delete');
 
 });
 

@@ -56,12 +56,21 @@
                         </thead>
                         <tbody>
 
-                        @foreach($companies as $company)
+                        @foreach($items as $item)
                             <tr>
                                 @foreach($camps as $camp => $value)
-                                    <th>{{ $company->$camp}}</th>
+                                    <td>{{ $item->$camp}}</td>
                                 @endforeach
-                                <th>  </th>
+                                <td>
+                                    {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item->id], 'method' => 'Post']) !!}
+                                    {!! Form::text('id', $value = $item->id, $attributes = ['style="visibility:hidden;height:0px;"']); !!}
+                                    {!! Form::submit('Cambiar') !!}
+                                    {!! Form::close() !!}
+                                    {!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item->id], 'method' => 'Post']) !!}
+                                    {!! Form::submit('Borrar') !!}
+                                    {!! Form::close() !!}
+
+                                </td>
                             </tr>
                         @endforeach
 
@@ -71,10 +80,11 @@
                             @foreach($camps as $camp => $value)
                                 <th>{{ $camp}}</th>
                             @endforeach
+                                <th>Modificar</th>
                         </tr>
                         </tfoot>
                     </table>
-                    {{ $companies->links() }}
+                    {{ $items->links() }}
                 </div>
                 <!-- /.box-body -->
             </div>

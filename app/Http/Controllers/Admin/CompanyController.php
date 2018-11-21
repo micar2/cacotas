@@ -13,6 +13,11 @@ class CompanyController extends Controller
         $all = Genaral::index('companies');
         $table='Compañias';
         $route='companies';
-        return view('admin.layouts.generalViewIndex', ['route'=>$route,'companies' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
+        return view('admin.layouts.generalViewIndex', ['route'=>$route,'items' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
+    }
+
+    public function change($id)
+    {
+        dd($id);
     }
 }
