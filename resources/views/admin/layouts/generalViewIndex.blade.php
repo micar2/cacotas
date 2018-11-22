@@ -66,10 +66,13 @@
                                     {!! Form::text('id', $value = $item->id, $attributes = ['style="visibility:hidden;height:0px;"']); !!}
                                     {!! Form::submit('Cambiar') !!}
                                     {!! Form::close() !!}
-                                    {!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item->id], 'method' => 'Post']) !!}
+                                    @if($item->deleted_at == '')
+                                    {!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item->id], 'method' => 'Delete']) !!}
                                     {!! Form::submit('Borrar') !!}
                                     {!! Form::close() !!}
+                                        @else
 
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

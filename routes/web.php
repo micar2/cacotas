@@ -98,7 +98,7 @@ Route::group([
 
     Route::get('companies', 'CompanyController@index')->name('admin.companies.show');
     Route::put('companies/change/{id}', 'CompanyController@change')->name('admin.companies.change');
-    Route::post('companies/delete/{id}', 'CompanyController@delete')->name('admin.companies.delete');
+    Route::delete('companies/delete/{id}', 'CompanyController@delete')->name('admin.companies.delete');
 
     //crud articles
 
