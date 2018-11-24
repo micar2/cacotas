@@ -20,13 +20,37 @@ class CompanyController extends Controller
 
     public function change($id)
     {
-        dd($id);
+        $item = Company::find($id);
+
+        return view('admin.company.update',['item' => $item]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $item = Company::find($id);
+
+        if ($item) {
+
+            $item->update($request->all());
+
+            return redirect()->route('admin.companies.show');
+        } else {
+            return Utils::reportarError('Error al intentar editas la empresa');
+        }
+
     }
 
     public function delete($id)
     {
         $item = Company::find($id);
         $item->delete();
+        return redirect(route('admin.companies.show'));
+    }
+
+    public function restore($id)
+    {
+        $company = Company::onlyTrashed()->find($id)->restore();
+
         return redirect(route('admin.companies.show'));
     }
 }

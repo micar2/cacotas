@@ -98,31 +98,41 @@ Route::group([
 
     Route::get('companies', 'CompanyController@index')->name('admin.companies.show');
     Route::put('companies/change/{id}', 'CompanyController@change')->name('admin.companies.change');
+    Route::post('companies/update/{id}', 'CompanyController@update')->name('admin.companies.update');
     Route::delete('companies/delete/{id}', 'CompanyController@delete')->name('admin.companies.delete');
+    Route::post('companies/restore/{id}', 'CompanyController@restore')->name('admin.companies.restore');
 
     //crud articles
 
     Route::get('articles', 'ArticleController@index')->name('admin.articles.show');
-    Route::post('articles/change/{id}', 'ArticleController@change')->name('admin.articles.change');
-    Route::post('articles/delete/{id}', 'ArticleController@delete')->name('admin.articles.delete');
+    Route::put('articles/change/{id}', 'ArticleController@change')->name('admin.articles.change');
+    Route::post('articles/update/{id}', 'ArticleController@update')->name('admin.articles.update');
+    Route::delete('articles/delete/{id}', 'ArticleController@delete')->name('admin.articles.delete');
+    Route::post('articles/restore/{id}', 'ArticleController@restore')->name('admin.articles.restore');
 
     //crud orders
 
     Route::get('orders', 'OrdersController@index')->name('admin.orders.show');
-    Route::post('orders/change/{id}', 'OrdersController@change')->name('admin.orders.change');
-    Route::post('orders/delete/{id}', 'OrdersController@delete')->name('admin.orders.delete');
+    Route::put('orders/change/{id}', 'OrdersController@change')->name('admin.orders.change');
+    Route::post('orders/update/{id}', 'OrdersController@update')->name('admin.orders.update');
+    Route::delete('orders/delete/{id}', 'OrdersController@delete')->name('admin.orders.delete');
+    Route::post('orders/restore/{id}', 'OrdersController@restore')->name('admin.orders.restore');
 
     //crud ordersArticles
 
     Route::get('ordersArticles', 'OrdersArticlesController@index')->name('admin.ordersArticles.show');
-    Route::post('ordersArticles/change/{id}', 'OrdersArticlesController@change')->name('admin.ordersArticles.change');
-    Route::post('ordersArticles/delete/{id}', 'OrdersArticlesController@delete')->name('admin.ordersArticles.delete');
+    Route::put('ordersArticles/change/{id}', 'OrdersArticlesController@change')->name('admin.ordersArticles.change');
+    Route::post('ordersArticles/update/{id}', 'OrdersArticlesController@update')->name('admin.ordersArticles.update');
+    Route::delete('ordersArticles/delete/{id}', 'OrdersArticlesController@delete')->name('admin.ordersArticles.delete');
+    Route::post('ordersArticles/restore/{id}', 'OrdersArticlesController@restore')->name('admin.ordersArticles.restore');
 
     //crud users
 
     Route::get('users', 'UsersController@index')->name('admin.users.show');
-    Route::post('users/change/{id}', 'UsersController@change')->name('admin.users.change');
-    Route::post('users/delete/{id}', 'UsersController@delete')->name('admin.users.delete');
+    Route::put('users/change/{id}', 'UsersController@change')->name('admin.users.change');
+    Route::post('users/update/{id}', 'UsersController@update')->name('admin.users.update');
+    Route::delete('users/delete/{id}', 'UsersController@delete')->name('admin.users.delete');
+    Route::post('users/restore/{id}', 'UsersController@restore')->name('admin.users.restore');
 
 });
 
