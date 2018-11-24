@@ -6,6 +6,7 @@ use App\Admin\Genaral;
 use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Monolog\Utils;
 
 class ArticleController extends Controller
 {
@@ -21,7 +22,7 @@ class ArticleController extends Controller
     {
         $item = Article::find($id);
 
-        return view('admin.articles.update',['article' => $item]);
+        return view('admin.article.update',['item' => $item]);
     }
 
     public function update(Request $request,$id)

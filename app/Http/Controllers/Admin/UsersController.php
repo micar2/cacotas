@@ -21,7 +21,7 @@ class UsersController extends Controller
     {
         $item = User::find($id);
 
-        return view('admin.users.update',['item' => $item]);
+        return view('admin.user.update',['item' => $item]);
     }
 
     public function update(Request $request,$id)
