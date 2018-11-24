@@ -19,31 +19,24 @@ class OrdersController extends Controller
 
     public function change($id)
     {
-
+        $route='ordersArticles';
         $orders = Orders::find($id);
-
         $ordersArticles = Orders::getArticles($id);
-
         $camps = array_keys(collect($ordersArticles[0])->toArray());
-
         $ordersArticles = collect($ordersArticles)->toArray();
 
-        return view('admin.order.update',['order' => $orders, 'items'=>$ordersArticles, 'camps'=>$camps]);
+        return view('admin.order.update',['order' => $orders, 'items'=>$ordersArticles, 'camps'=>$camps, 'route' => $route]);
     }
 
     public function update(Request $request,$id)
     {
         $item = Orders::find($id);
-
         if ($item) {
-
             $item->update($request->all());
-
             return redirect()->route('admin.orders.show');
         } else {
             return Utils::reportarError('Error al intentar editas la empresa');
         }
-
     }
 
     public function delete($id)

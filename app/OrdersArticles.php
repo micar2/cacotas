@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class OrdersArticles extends Model
 {
@@ -22,6 +23,14 @@ class OrdersArticles extends Model
     public function order()
     {
         return $this->belongsTo(Orders::class, 'orderId');
+    }
+
+    static function getArticle($id)
+    {
+        $item = DB::table('orders_articles')->where('orders_articles.id','=',$id)
+            ->join('articles', 'orders_articles.articleId','=','articles.id')
+            ->select( '*','orders_articles.id as id' )->first();
+        return $item;
     }
 
 }

@@ -76,19 +76,19 @@
                                     <td>{{ $camp }}</td>
                                 @endforeach
                                 <td>
-                                    {{--@if($item->deleted_at == '')--}}
-                                        {{--{!! Form::model($item,['route' => ['admin.'.$route.'.change',$item->id], 'method' => 'Put']) !!}--}}
-                                        {{--{!! Form::submit('Detalle') !!}--}}
-                                        {{--{!! Form::close() !!}--}}
+                                    @if($item['deleted_at'] == '')
+                                        {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item['id']], 'method' => 'Put']) !!}
+                                        {!! Form::submit('Detalle') !!}
+                                        {!! Form::close() !!}
 
-                                        {{--{!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item->id], 'method' => 'Delete']) !!}--}}
-                                        {{--{!! Form::submit('Borrar') !!}--}}
-                                        {{--{!! Form::close() !!}--}}
-                                    {{--@else--}}
-                                        {{--{!! Form::model($item,['route' => ['admin.'.$route.'.restore',$item->id], 'method' => 'Post']) !!}--}}
-                                        {{--{!! Form::submit('Resataurar') !!}--}}
-                                        {{--{!! Form::close() !!}--}}
-                                    {{--@endif--}}
+                                        {!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item['id']], 'method' => 'Delete']) !!}
+                                        {!! Form::submit('Borrar') !!}
+                                        {!! Form::close() !!}
+                                    @else
+                                        {!! Form::model($item,['route' => ['admin.'.$route.'.restore',$item['id']], 'method' => 'Post']) !!}
+                                        {!! Form::submit('Resataurar') !!}
+                                        {!! Form::close() !!}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

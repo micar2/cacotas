@@ -62,20 +62,22 @@ class Orders extends Model
     static function getArticles($id)
     {
 
-//        $ordersArticles = OrdersArticles::where('orderId', $id)
-//            ->join('articles','orders_articles.articleId','=','articles.id')->get();
+        $ordersArticles = OrdersArticles::where('orderId', $id)
+        ->join('articles','orders_articles.articleId','=','articles.id')
+            ->select('*','orders_articles.id as id')->get();
+
 // preguntar por que el id que da es el de articulo y no el de orderarticle
 
-        $ordersArticles = OrdersArticles::where('orderId', $id)->get();
-        foreach ($ordersArticles as $ordersArticle){
-            $article =Article::find($ordersArticle->articleId);
-            $camps = array_keys($article->toArray());
-            foreach ($camps as $camp){
-                if ($camp != 'id' || $camp != 'deleted_at'|| $camp != 'created_at'|| $camp != 'updated_at'){
-                    $ordersArticle = array_add($ordersArticle, $camp, $article->$camp);
-                }
-            }
-        }
+//        $ordersArticles = OrdersArticles::where('orderId', $id)->get();
+//        foreach ($ordersArticles as $ordersArticle){
+//            $article =Article::find($ordersArticle->articleId);
+//            $camps = array_keys($article->toArray());
+//            foreach ($camps as $camp){
+//                if ($camp != 'id' || $camp != 'deleted_at'|| $camp != 'created_at'|| $camp != 'updated_at'){
+//                    $ordersArticle = array_add($ordersArticle, $camp, $article->$camp);
+//                }
+//            }
+//        }
 
         return $ordersArticles;
     }
