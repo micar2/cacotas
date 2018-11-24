@@ -1,17 +1,6 @@
 @extends('admin.layouts.layout')
 @section('content')
 
-    {!! Form::model($item,['route' => ['admin.companies.update',$item->id], 'method' => 'Post']) !!}
-
-    @include('forms.article')
-
-    <div class="form-group col-sm-12">
-        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-        <a href="" class="btn btn-default">Cancelar</a>
-    </div>
-
-    {!! Form::close() !!}
-
 @section('links')
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('admin/css/dataTables.bootstrap.min.css') }}">
@@ -34,6 +23,20 @@
 @endsection
 <!-- Content Header (Page header) -->
 <section class="content-header">
+    <div class="row">
+        <div class="col-xs-12">
+    {!! Form::model($order,['route' => ['admin.companies.update',$order->id], 'method' => 'Post']) !!}
+
+    @include('forms.orderAdmin')
+
+    <div class="form-group col-sm-12">
+        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
+        <a href="" class="btn btn-default">Cancelar</a>
+    </div>
+
+    {!! Form::close() !!}
+        </div>
+    </div>
     <h1>
         Data Tables
         <small>advanced tables</small>
@@ -52,15 +55,15 @@
 
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">{{ $table }}</h3>
+                    <h3 class="box-title">Pedido</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            @foreach($camps as $camp => $value)
-                                <th>{{ $camp}}</th>
+                            @foreach($camps as $value)
+                                <th>{{ $value}}</th>
                             @endforeach
                             <th>Modificar</th>
                         </tr>
@@ -69,23 +72,23 @@
 
                         @foreach($items as $item)
                             <tr>
-                                @foreach($camps as $camp => $value)
-                                    <td>{{ $item->$camp}}</td>
+                                @foreach($item as  $camp)
+                                    <td>{{ $camp }}</td>
                                 @endforeach
                                 <td>
-                                    @if($item->deleted_at == '')
-                                        {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item->id], 'method' => 'Put']) !!}
-                                        {!! Form::submit('Detalle') !!}
-                                        {!! Form::close() !!}
+                                    {{--@if($item->deleted_at == '')--}}
+                                        {{--{!! Form::model($item,['route' => ['admin.'.$route.'.change',$item->id], 'method' => 'Put']) !!}--}}
+                                        {{--{!! Form::submit('Detalle') !!}--}}
+                                        {{--{!! Form::close() !!}--}}
 
-                                        {!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item->id], 'method' => 'Delete']) !!}
-                                        {!! Form::submit('Borrar') !!}
-                                        {!! Form::close() !!}
-                                    @else
-                                        {!! Form::model($item,['route' => ['admin.'.$route.'.restore',$item->id], 'method' => 'Post']) !!}
-                                        {!! Form::submit('Resataurar') !!}
-                                        {!! Form::close() !!}
-                                    @endif
+                                        {{--{!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item->id], 'method' => 'Delete']) !!}--}}
+                                        {{--{!! Form::submit('Borrar') !!}--}}
+                                        {{--{!! Form::close() !!}--}}
+                                    {{--@else--}}
+                                        {{--{!! Form::model($item,['route' => ['admin.'.$route.'.restore',$item->id], 'method' => 'Post']) !!}--}}
+                                        {{--{!! Form::submit('Resataurar') !!}--}}
+                                        {{--{!! Form::close() !!}--}}
+                                    {{--@endif--}}
                                 </td>
                             </tr>
                         @endforeach
@@ -93,14 +96,14 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            @foreach($camps as $camp => $value)
-                                <th>{{ $camp}}</th>
+                            @foreach($camps as $value)
+                                <th>{{ $value}}</th>
                             @endforeach
                             <th>Modificar</th>
                         </tr>
                         </tfoot>
                     </table>
-                    {{ $items->links() }}
+
                 </div>
                 <!-- /.box-body -->
             </div>

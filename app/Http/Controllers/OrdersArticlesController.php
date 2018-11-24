@@ -29,6 +29,7 @@ class OrdersArticlesController extends Controller
     {
         //si ya existe un orderarticle se lo suma
         if ($ordersArticles = OrdersArticles::where('articleId', $articleId )->where('orderId', $ordersId)->first()){
+
             return redirect()->route('ordersArticles.plusLess', [$ordersArticles->id, $request['number'], $ordersId, 'plus']);
         }
         OrdersArticles::create([
@@ -41,7 +42,8 @@ class OrdersArticlesController extends Controller
         $article->stock -= $request['number'];
         $article->save();
 
-        $company = Company::find($ordersId);
+        $company = Orders::find($ordersId);
+
 
         Orders::calcTotal($ordersId);
 
@@ -50,10 +52,12 @@ class OrdersArticlesController extends Controller
 
     public function plusLess ($id, $number, $ordersId,$operation)
     {
+
         $orderArticle = OrdersArticles::find($id);
         if ($operation=='plus'){
             $orderArticle->number += $number;
             $orderArticle->save();
+
         }
         if ($operation=='less'){
             $orderArticle->number -= $number;
@@ -62,20 +66,16 @@ class OrdersArticlesController extends Controller
             }
             $orderArticle->save();
         }
-        Orders::calcTotal($id);
+
+        Orders::calcTotal($ordersId);
         return redirect()->route('orders.show', $ordersId);
 
     }
     public function delete($id, $ordersId)
     {
         $ordersArticles = OrdersArticles::find($id);
-
-        $article = Article::find($ordersArticles->articleId);
-        $article->stock += $ordersArticles->number;
-        $article->save();
-
         $ordersArticles->delete();
-        Orders::calcTotal($id);
+        Orders::calcTotal($ordersId);
         return redirect()->route('orders.show', $ordersId);
     }
 

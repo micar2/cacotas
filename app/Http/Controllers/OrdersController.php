@@ -38,10 +38,10 @@ class OrdersController extends Controller
 
     public function show($id)
     {
-        $articles = [];
         $order = Orders::find($id);
         $company = Company::find($order->companyId);
         $ordersArticles = Orders::getArticles($id);
+
         return view('clients.orders.show',['orders' => $order, 'ordersArticles'=>$ordersArticles, 'company' => $company]);
     }
 

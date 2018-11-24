@@ -19,10 +19,16 @@ class OrdersController extends Controller
 
     public function change($id)
     {
-        $item = Orders::find($id);
-        
 
-        return view('admin.order.update',['item' => $item]);
+        $orders = Orders::find($id);
+
+        $ordersArticles = Orders::getArticles($id);
+
+        $camps = array_keys(collect($ordersArticles[0])->toArray());
+
+        $ordersArticles = collect($ordersArticles)->toArray();
+
+        return view('admin.order.update',['order' => $orders, 'items'=>$ordersArticles, 'camps'=>$camps]);
     }
 
     public function update(Request $request,$id)

@@ -53,7 +53,7 @@ class Orders extends Model
         $total = $order->total;
 
         $orders = Orders::find($id);
-        $orders->debt = $total;
+        $orders->total = $total;
         $orders->save();
 
         return true;
@@ -61,6 +61,11 @@ class Orders extends Model
     //cambiarlo con una buena peticion
     static function getArticles($id)
     {
+
+//        $ordersArticles = OrdersArticles::where('orderId', $id)
+//            ->join('articles','orders_articles.articleId','=','articles.id')->get();
+// preguntar por que el id que da es el de articulo y no el de orderarticle
+
         $ordersArticles = OrdersArticles::where('orderId', $id)->get();
         foreach ($ordersArticles as $ordersArticle){
             $article =Article::find($ordersArticle->articleId);
@@ -71,6 +76,7 @@ class Orders extends Model
                 }
             }
         }
+
         return $ordersArticles;
     }
 }
