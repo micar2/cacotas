@@ -19,10 +19,39 @@ class OrdersArticlesController extends Controller
         return view('admin.layouts.generalViewIndex', ['route'=>$route,'items' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
     }
 
+    public function create($orderId)
+    {
+        $articles = Article::orderBy('name','asc')->pluck('name','id');
+        return view('admin.ordersArticles.create',['articles'=>$articles,'orderId'=>$orderId]);
+    }
+
+    public function store(Request $request,$orderId)
+    {
+
+        $request['orderId']=$orderId;
+        if ($request['prepare']==1){
+            $request['prepare']=true;
+        }else{
+            $request['prepare']=false;
+        }
+        $orderArticle = new OrdersArticles($request->all());
+        $orderArticle->save();
+
+//        OrdersArticles::create([
+//            'articleId' => $request['articleId'],
+//            'orderId' => $orderId,
+//            'number' => $request['number'],
+//            'prepare' => $request['prepare'],
+//        ]);
+        return redirect()->route('admin.orders.change',$orderId);
+    }
+
+
     public function change($id)
     {
         $item = OrdersArticles::getArticle($id);
-        $articles = Article::pluck('name','id');
+
+        $articles = Article::orderBy('name','asc')->pluck('name','id');
 
         return view('admin.ordersArticles.update',['item' => $item, 'articles'=>$articles]);
     }
@@ -45,8 +74,10 @@ class OrdersArticlesController extends Controller
     public function delete($id)
     {
         $item = OrdersArticles::find($id);
+        $orderId = $item->orderId;
         $item->delete();
-        return redirect(route('admin.ordersArticles.show'));
+
+        return redirect(route('admin.orders.change',['orderId'=>$orderId]));
     }
 
     public function restore($id)

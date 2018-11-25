@@ -30,6 +30,7 @@ class OrdersArticles extends Model
         $item = DB::table('orders_articles')->where('orders_articles.id','=',$id)
             ->join('articles', 'orders_articles.articleId','=','articles.id')
             ->select( '*','orders_articles.id as id' )->first();
+
         return $item;
     }
 

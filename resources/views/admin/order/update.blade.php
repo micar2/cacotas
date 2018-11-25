@@ -35,7 +35,18 @@
     </div>
 
     {!! Form::close() !!}
+            @if(count($items)<1)
         </div>
+        {!! Form::model($order,['route' => ['admin.'.$route.'.create',$order->id], 'method' => 'Post']) !!}
+        {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+        {!! Form::close() !!}
+    </div>
+</section>
+                @else
+        </div>
+        {!! Form::model($order,['route' => ['admin.'.$route.'.create',$order->id], 'method' => 'Post']) !!}
+        {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
+        {!! Form::close() !!}
     </div>
     <h1>
         Data Tables
@@ -78,11 +89,11 @@
                                 <td>
                                     @if($item['deleted_at'] == '')
                                         {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item['id']], 'method' => 'Put']) !!}
-                                        {!! Form::submit('Detalle') !!}
+                                        {!! Form::submit('Detalle', ['class' => 'btn btn-success']) !!}
                                         {!! Form::close() !!}
 
                                         {!! Form::model($item,['route' => ['admin.'.$route.'.delete',$item['id']], 'method' => 'Delete']) !!}
-                                        {!! Form::submit('Borrar') !!}
+                                        {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                         {!! Form::close() !!}
                                     @else
                                         {!! Form::model($item,['route' => ['admin.'.$route.'.restore',$item['id']], 'method' => 'Post']) !!}
@@ -308,7 +319,7 @@
      immediately after the control sidebar -->
 <div class="control-sidebar-bg"></div>
 
-
+@endif
 
 
 

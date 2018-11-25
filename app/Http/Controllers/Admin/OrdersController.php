@@ -22,6 +22,10 @@ class OrdersController extends Controller
         $route='ordersArticles';
         $orders = Orders::find($id);
         $ordersArticles = Orders::getArticles($id);
+        if ($ordersArticles->isEmpty()){
+
+            return view('admin.order.update',['order' => $orders, 'items'=>$ordersArticles, 'route' => $route]);
+        }
         $camps = array_keys(collect($ordersArticles[0])->toArray());
         $ordersArticles = collect($ordersArticles)->toArray();
 

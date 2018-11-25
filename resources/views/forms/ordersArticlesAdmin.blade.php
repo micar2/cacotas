@@ -2,7 +2,7 @@
     {!! Form::label('articleId', 'Articulo:') !!}
     {!! Form::select('articleId', $articles, null) !!}
 </div>
-
+@if(isset($item))
 <div class="form-group col-sm-6">
     Referencia:
     {{ $item->reference }}
@@ -19,6 +19,7 @@
     Descripcion:
   {{ $item->description }}
 </div>
+@endif
 <div class="form-group col-sm-6">
     {!! Form::label('number', 'Cantidad:') !!}
     {!! Form::text('number', null, ['class' => 'form-control']) !!}
