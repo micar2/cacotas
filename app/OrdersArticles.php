@@ -34,4 +34,12 @@ class OrdersArticles extends Model
         return $item;
     }
 
+    static function plus ($id, $number, $orderId)
+    {
+        $orderArticle = OrdersArticles::find($id);
+            $orderArticle->number += $number;
+            $orderArticle->save();
+        Orders::calcTotal($orderId);
+    }
+
 }

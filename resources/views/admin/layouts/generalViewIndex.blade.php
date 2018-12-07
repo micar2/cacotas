@@ -44,8 +44,8 @@
                     <h3 class="box-title">{{ $table }}</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                <div class="box-body" style="overflow:scroll;">
+                    <table id="example1" class="table table-bordered table-striped" >
                         <thead>
                         <tr>
                             @foreach($camps as $camp => $value)
@@ -63,7 +63,7 @@
                                 @endforeach
                                 <td>
                                     @if($item->deleted_at == '')
-                                    {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item->id], 'method' => 'Put']) !!}
+                                    {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item->id], 'method' => 'Get']) !!}
                                     {!! Form::submit('Detalle') !!}
                                     {!! Form::close() !!}
 

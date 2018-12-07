@@ -69,7 +69,7 @@
                     <h3 class="box-title">Pedido</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body" style="overflow:scroll;">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -88,7 +88,7 @@
                                 @endforeach
                                 <td>
                                     @if($item['deleted_at'] == '')
-                                        {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item['id']], 'method' => 'Put']) !!}
+                                        {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item['id']], 'method' => 'Post']) !!}
                                         {!! Form::submit('Detalle', ['class' => 'btn btn-success']) !!}
                                         {!! Form::close() !!}
 

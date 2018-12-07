@@ -73,8 +73,10 @@ class OrdersArticlesController extends Controller
     }
     public function delete($id, $ordersId)
     {
+
         $ordersArticles = OrdersArticles::find($id);
         $ordersArticles->delete();
+
         Orders::calcTotal($ordersId);
         return redirect()->route('orders.show', $ordersId);
     }

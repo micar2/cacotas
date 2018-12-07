@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 @section('content')
 
-    {!! Form::model($item,['route' => ['admin.users.update',$item->id], 'method' => 'Post']) !!}
+    {!! Form::model($item,['route' => ['admin.users.update',$item->id], 'method' => 'Patch']) !!}
 
     @include('forms.user')
 

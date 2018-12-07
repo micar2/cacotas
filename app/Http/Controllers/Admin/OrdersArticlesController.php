@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin\Genaral;
 use App\Article;
+use App\Orders;
 use App\OrdersArticles;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,22 +28,19 @@ class OrdersArticlesController extends Controller
 
     public function store(Request $request,$orderId)
     {
+        if ($ordersArticles = OrdersArticles::where('articleId', $request['articleId'] )->where('orderId', $orderId)->first()){
 
-        $request['orderId']=$orderId;
-        if ($request['prepare']==1){
-            $request['prepare']=true;
-        }else{
-            $request['prepare']=false;
+            OrdersArticles::plus($ordersArticles->id, $request['number'], $orderId, 'plus');
+            return redirect()->route('admin.orders.change',['id'=>$orderId]);
         }
-        $orderArticle = new OrdersArticles($request->all());
-        $orderArticle->save();
 
-//        OrdersArticles::create([
-//            'articleId' => $request['articleId'],
-//            'orderId' => $orderId,
-//            'number' => $request['number'],
-//            'prepare' => $request['prepare'],
-//        ]);
+        OrdersArticles::create([
+            'articleId' => $request['articleId'],
+            'orderId' => $orderId,
+            'number' => $request['number'],
+            'prepare' => $request['prepare'],
+        ]);
+
         return redirect()->route('admin.orders.change',$orderId);
     }
 
@@ -59,12 +57,12 @@ class OrdersArticlesController extends Controller
     public function update(Request $request,$id)
     {
         $item = OrdersArticles::find($id);
-
+        $orderId = $item->orderId;
         if ($item) {
 
             $item->update($request->all());
 
-            return redirect()->route('admin.ordersArticles.show');
+            return redirect()->route('admin.orders.change',['id'=>$orderId]);
         } else {
             return Utils::reportarError('Error al intentar editas la empresa');
         }
@@ -75,9 +73,12 @@ class OrdersArticlesController extends Controller
     {
         $item = OrdersArticles::find($id);
         $orderId = $item->orderId;
+
         $item->delete();
 
-        return redirect(route('admin.orders.change',['orderId'=>$orderId]));
+        Orders::calcTotal($orderId);
+
+        return redirect()->route('admin.orders.change',['id'=>$orderId]);
     }
 
     public function restore($id)
