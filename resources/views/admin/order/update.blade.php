@@ -83,11 +83,13 @@
 
                         @foreach($items as $item)
                             <tr>
+
                                 @foreach($item as  $camp)
                                     <td>{{ $camp }}</td>
                                 @endforeach
                                 <td>
-                                    @if($item['deleted_at'] == '')
+
+                                    @if($item['deleted_at'] == null)
                                         {!! Form::model($item,['route' => ['admin.'.$route.'.change',$item['id']], 'method' => 'Post']) !!}
                                         {!! Form::submit('Detalle', ['class' => 'btn btn-success']) !!}
                                         {!! Form::close() !!}

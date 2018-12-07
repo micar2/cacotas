@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 
 class OrdersArticles extends Model
 {
+    use Notifiable;
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
@@ -41,5 +43,7 @@ class OrdersArticles extends Model
             $orderArticle->save();
         Orders::calcTotal($orderId);
     }
+
+
 
 }

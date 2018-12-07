@@ -120,7 +120,6 @@ Route::group([
 
     //crud ordersArticles
 
-    Route::get('ordersArticles', 'OrdersArticlesController@index')->name('admin.ordersArticles.show');
     Route::post('ordersArticles/create/{orderId}', 'OrdersArticlesController@create')->name('admin.ordersArticles.create');
     Route::post('ordersArticles/store/{orderId}', 'OrdersArticlesController@store')->name('admin.ordersArticles.store');
     Route::post('ordersArticles/change/{id}', 'OrdersArticlesController@change')->name('admin.ordersArticles.change');

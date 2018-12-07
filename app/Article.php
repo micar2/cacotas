@@ -28,4 +28,16 @@ class Article extends Model
 
         return ['count'=>$count,'items'=>$items];
     }
+    static function stockcalc($articleId, $number, $operation)
+    {
+        if($operation=='plus'){
+            $article = Article::find($articleId);
+            $article->stock += $number;
+        }
+        if($operation=='less'){
+            $article = Article::find($articleId);
+            $article->stock -= $number;
+        }
+        $article->save();
+    }
 }

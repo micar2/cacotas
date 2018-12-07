@@ -80,19 +80,6 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Detalles de Pedidos</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="active"><a href="{{ route('admin.ordersArticles.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Usuarios</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

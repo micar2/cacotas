@@ -34,13 +34,14 @@ class OrdersArticlesController extends Controller
             return redirect()->route('admin.orders.change',['id'=>$orderId]);
         }
 
-        OrdersArticles::create([
+        $item = OrdersArticles::create([
             'articleId' => $request['articleId'],
             'orderId' => $orderId,
             'number' => $request['number'],
             'prepare' => $request['prepare'],
         ]);
-
+        Article::stockcalc($item->articleId,$item->number,'less');
+        Orders::calcTotal($orderId);
         return redirect()->route('admin.orders.change',$orderId);
     }
 
@@ -58,10 +59,12 @@ class OrdersArticlesController extends Controller
     {
         $item = OrdersArticles::find($id);
         $orderId = $item->orderId;
+        if($item->number!=$request['number']):Orders::calcTotal($orderId);
+            if($item->number<$request['number']):Article::stockcalc($item->aticleId,$item->number,'less');endif;
+            if($item->number>$request['number']):Article::stockcalc($item->aticleId,$item->number,'plus');endif;
+        endif;
         if ($item) {
-
             $item->update($request->all());
-
             return redirect()->route('admin.orders.change',['id'=>$orderId]);
         } else {
             return Utils::reportarError('Error al intentar editas la empresa');
@@ -73,9 +76,8 @@ class OrdersArticlesController extends Controller
     {
         $item = OrdersArticles::find($id);
         $orderId = $item->orderId;
-
+        Article::stockcalc($item->articleId,$item->number,'plus');
         $item->delete();
-
         Orders::calcTotal($orderId);
 
         return redirect()->route('admin.orders.change',['id'=>$orderId]);
@@ -83,8 +85,15 @@ class OrdersArticlesController extends Controller
 
     public function restore($id)
     {
-        $company = OrdersArticles::onlyTrashed()->find($id)->restore();
+        $item = OrdersArticles::withTrashed()->find($id);
+        $orderId = $item->orderId;
 
-        return redirect(route('admin.ordersArticles.show'));
+//        if ($orderArticle=OrdersArticles::where('articleId','=',$item->articleId)->first()){
+//            OrdersArticles::plus($orderArticle->id, $item->number, $orderId, 'plus');
+//        }
+        OrdersArticles::onlyTrashed()->find($id)->restore();
+        Article::stockcalc($item->aticleId,$item->number,'less');
+        Orders::calcTotal($orderId);
+        return redirect()->route('admin.orders.change',['id'=>$orderId]);
     }
 }
