@@ -31,7 +31,10 @@ class OrdersArticles extends Model
     {
         $item = DB::table('orders_articles')->where('orders_articles.id','=',$id)
             ->join('articles', 'orders_articles.articleId','=','articles.id')
-            ->select( '*','orders_articles.id as id' )->first();
+            ->select( '*','orders_articles.id as id',
+                'orders_articles.deleted_at as deleted_at',
+                'orders_articles.updated_at as updated_at',
+                'orders_articles.created_at as created_at' )->first();
 
         return $item;
     }

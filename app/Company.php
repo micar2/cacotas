@@ -39,4 +39,15 @@ class Company extends Model
         return true;
     }
 
+    static function getCompanyWithOrder($orderId)
+    {
+        $company = Company::join('orders','companies.id','=','orders.companyId')->where('orders.id','=',$orderId)
+            ->select('*','companies.id as id',
+                'companies.deleted_at as deleted_at',
+                'companies.updated_at as updated_at',
+                'companies.created_at as created_at')->first();
+
+        return $company;
+    }
+
 }

@@ -12,11 +12,10 @@ class PdfController extends Controller
     {
         return view('pdf.index');
     }
-    public function getGenerar(Request $request)
+    public function getGenerar(Request $request, $orderId)
     {
         $accion = $request->get('accion');
         $tipo = $request->get('tipo');
-        $orderId = $request->get('orderId');
         Pdf::pdf($accion,$tipo,$orderId);
     }
 

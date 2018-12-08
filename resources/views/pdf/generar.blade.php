@@ -80,18 +80,12 @@
         .fisico .fondo{
             background-color: #fff;
         }
-        @if($tipo=='fisico')
-    #logo{
-            display: none;
-        }
-        @endif
     </style>
 </head>
 <body>
-<div class="@if($tipo=='fisico') fisico @endif">
     <table width="100%" class="tabla1">
         <tr>
-            <td width="73%" align="center"><img id="logo" src="{{ asset('images/logo_dmc.png') }}" alt="" width="255" height="57"></td>
+            <td width="73%" align="center"><img id="logo" src="{{ asset('images/pato.jpg') }}" alt="" width="auto" height="57"></td>
             <td width="27%" rowspan="3" align="center" style="padding-right:0">
                 <table width="100%">
                     <tr>
@@ -127,8 +121,8 @@
         <tr>
             <td>Dirección:</td>
             <td class="linea"><span class="text">{{ $direccion }}</span></td>
-            <td>DNI:</td>
-            <td class="linea"><span class="text">{{ $dni }}</span></td>
+            <td>Tlf:</td>
+            <td class="linea"><span class="text">{{ $tlf }}</span></td>
             <td>&nbsp;</td>
             <td align="center" class="border"><span class="text">{{ $dia }}</span></td>
             <td align="center" class="border"><span class="text">{{ $mes }}</span></td>
@@ -138,17 +132,17 @@
     <table width="100%" class="tabla3">
         <tr>
             <td align="center" class="fondo"><strong>CANT.</strong></td>
-            <td align="center" class="fondo"><strong>DESCRIPCIÓN</strong></td>
-            <td align="center" class="fondo"><strong>P. UNITARIO</strong></td>
+            <td align="center" class="fondo"><strong>NOMBRE</strong></td>
+            <td align="center" class="fondo"><strong>PRECIO</strong></td>
             <td align="center" class="fondo"><strong>IMPORTE</strong></td>
         </tr>
-        @for ($i = 0; $i < 6; $i++)
+        @for ($i = 0; $i < 7; $i++)
             @if (array_key_exists($i, $articulos))
                 <tr>
-                    <td width="7%" align="center"><span class="text">{{ $articulos[$i]['cantidad'] }}</span></td>
-                    <td width="59%"><span class="text">{{ $articulos[$i]['descripcion'] }}</span></td>
-                    <td width="16%" align="right"><span class="text">{{ $articulos[$i]['precio'] }}</span></td>
-                    <td width="18%" align="right"><span class="text">{{ $articulos[$i]['importe'] }}</span></td>
+                    <td width="7%" align="center"><span class="text">{{ $articulos[$i]['number'] }} Kg</span></td>
+                    <td width="59%" align="center"><span class="text">{{ $articulos[$i]['name'] }}</span></td>
+                    <td width="16%" align="right"><span class="text">{{ $articulos[$i]['price'] }} €</span></td>
+                    <td width="18%" align="right"><span class="text">{{ $articulos[$i]['price']*$articulos[$i]['number'] }} €</span></td>
                 </tr>
             @else
                 <tr>
@@ -163,7 +157,7 @@
             <td style="border:0;">&nbsp;</td>
             <td style="border:0;">&nbsp;</td>
             <td align="right"><strong>TOTAL S/.</strong></td>
-            <td align="right"><span class="text">{{ $total }}</span></td>
+            <td align="right"><span class="text">{{ $total }} €</span></td>
         </tr>
         <tr>
             <td style="border:0;">&nbsp;</td>

@@ -9,36 +9,19 @@ class Pdf extends Model
 {
     static function pdf($accion='ver',$tipo='digital',$orderId)
     {
+        $companyOrder = Company::getCompanyWithOrder($orderId);
 
         $ruc = "10072486893";
         $numero = "00000412";
-        $nombres = "DAVID OLIVARES PEÑA";
-        $dia = "09";
-        $mes = "04";
-        $ayo = "17";
-        $direccion = "Lima Perú";
-        $dni = "23918745";
-        $total = 0;
-        $articulos = [
-            [
-                "cantidad" => 3,
-                "descripcion" => "COCINA A GAS",
-                "precio" => 400.00,
-                "importe" => 1200,
-            ],
-            [
-                "cantidad" => 1,
-                "descripcion" => "PLANCHA",
-                "precio" => 85.00,
-                "importe" => 85.00,
-            ],
-        ];
-        foreach ($articulos as $key => $value) {
-            $total += $value["importe"];
-            $articulos[$key]["precio"] = number_format($value["precio"],2,'.',' ');;
-            $articulos[$key]["importe"] = number_format($value["importe"],2,'.',' ');;
+        $nombres = $companyOrder->name;
+        $dia = $companyOrder->updated_at->format('d');
+        $mes = $companyOrder->updated_at->format('m');
+        $ayo = $companyOrder->updated_at->format('Y');
+        $direccion = $companyOrder->address;
+        $tlf = $companyOrder->telephone;
+        $total = $companyOrder->total;
+        $articulos = Orders::getArticles($orderId)->toArray();
 
-        }
         $total = number_format($total,2,'.',' ');
 
         $data['ruc'] = $ruc;
@@ -48,7 +31,7 @@ class Pdf extends Model
         $data['mes'] = $mes;
         $data['ayo'] = $ayo;
         $data['direccion'] = $direccion;
-        $data['dni'] = $dni;
+        $data['tlf'] = $tlf;
         $data['articulos'] = $articulos;
         $data['total'] = $total;
         $data['tipo'] = $tipo;

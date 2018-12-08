@@ -50,6 +50,7 @@
                         <td><a href="{{ route('orders.update', $orders->id) }}">Guardar</a></td>
                         @else
                         <td><a target="_blank" href="{{ action('PdfController@getGenerar',['accion'=>'ver','tipo'=>'digital','orderId'=>$orders->id]) }}">Ver Factura</a></td>
+                        <td><a target="_blank" href="{{ action('PdfController@getGenerar',['accion'=>'descargar','tipo'=>'digital','orderId'=>$orders->id]) }}">Descargar Factura</a></td>
                     @endif
                         <td><a href="{{ route( 'orders' , $company->id ) }}">atras</a></td>
                 </tr>
