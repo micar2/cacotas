@@ -25,7 +25,7 @@
 </div>
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('register.store') !!}" class="btn btn-default">Cancel</a>
+    <a href="{{ htmlspecialchars($_SERVER['HTTP_REFERER']) }}" class="btn btn-default">Cancel</a>
 </div>
 
 {!! Form::close() !!}

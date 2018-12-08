@@ -97,7 +97,7 @@ Route::group([
 
     Route::get('admin', function(){
         return view('admin.welcome');
-    })->name('welcome');
+    })->name('admin.welcome');
 
     //crud companies
 
