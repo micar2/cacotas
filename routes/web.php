@@ -76,6 +76,11 @@ Route::group([
 
 //Article
 
+    //PDF
+
+    Route::get('pdf','PdfController@getIndex');
+    Route::get('pdf/generar/{orderId}','PdfController@getGenerar');
+
 //Route::get('pagination/{articles}/{ordersId}','ArticleController@pagination')->name('article.pagination');
 
     Route::post('search/{ordersId}/{page}', 'ArticleController@search')->name('search');

@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="overflow:scroll;">
                 <div class="col-12 card">
                     <div class="card-body">
                         <h5 class="card-title">de {{ $company->name }}</h5>
@@ -14,7 +14,7 @@
 
                     </div>
                 </div>
-            <table>
+            <table >
 
                 @foreach($ordersArticles as $ordersArticle)
                 <tr>
@@ -48,6 +48,8 @@
                     @if($orders->open && $orders->deliverDate > now()->format('d-m-Y'))
                         <td><a href="{{ route('ordersArticles.create', $orders->id) }}">Agregar articulo</a></td>
                         <td><a href="{{ route('orders.update', $orders->id) }}">Guardar</a></td>
+                        @else
+                        <td><a target="_blank" href="{{ action('PdfController@getGenerar',['accion'=>'ver','tipo'=>'digital','orderId'=>$orders->id]) }}">Ver Factura</a></td>
                     @endif
                         <td><a href="{{ route( 'orders' , $company->id ) }}">atras</a></td>
                 </tr>
