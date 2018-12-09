@@ -80,7 +80,14 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
+
+        \request()->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email',
+            'telephone' => 'required|numeric|min:100000000',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|same:password',
+        ]);
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class LoginController extends Controller
 {
     /*
@@ -48,6 +49,14 @@ class LoginController extends Controller
 
     public function getin(Request $request)
     {
+//        request()->validate([
+//            'email'=>'required'|'email',
+//            'password'=>'required'
+//        ]);
+//        $this->validate(request(),[
+//            'email'=>'required'|'email',
+//            'password'=>'required'
+//            ]);
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -63,7 +72,7 @@ class LoginController extends Controller
             }
 
         }else{
-            return view('welcome');
+            return view('forms.login');
         }
 
     }

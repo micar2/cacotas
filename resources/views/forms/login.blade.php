@@ -2,7 +2,9 @@
 @section('content')
 
     {!! Form::open(['route' => 'login', 'method' => 'Post']) !!}
-
+    @if($errors->any())
+        {{ $errors }}
+    @endif
     <div class="form-group col-sm-6">
         {!! Form::label('email', 'E-mail:') !!}
         {!! Form::text('email', null, ['class' => 'form-control']) !!}
