@@ -13,10 +13,20 @@
                     <div class="form-group col-sm-6">
                         {!! Form::label('selection', 'Buscar por:') !!}
                         {!! Form::select('selection', ['name' => 'Nombre', 'description' => 'Descripción']) !!}
+                        @if($errors->has('selection'))
+                            <div class="error">{{ $errors->first('selection') }}</div>
+                        @endif
                     </div>
                     <div class="form-group col-sm-6">
                         {!! Form::text('text', null, ['class' => 'form-control', 'placeholder' => 'buscar']) !!}
+                        @if($errors->has('text'))
+                            <div class="error">{{ $errors->first('text') }}</div>
+                        @endif
                     </div>
+                    <div class="form-group col-sm-12">
+                        {!! Form::submit('Buscar', ['class' => 'btn btn-primary']) !!}
+                    </div>
+
                         {!! Form::close() !!}
                 </div>
             </div>

@@ -3,6 +3,9 @@
 @include('layouts.search')
     <dic class="container">
         <div class="row">
+            @if($errors->has('number'))
+                <div class="error">{{ $errors->first('number') }}</div>
+            @endif
             @foreach($articles as $article)
                 <div class="col-3">
                     <div>{{ $article->name }}</div>
@@ -16,7 +19,6 @@
 
                     <div class="form-group col-sm-12">
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                        <a href="{{ htmlspecialchars($_SERVER['HTTP_REFERER']) }}" class="btn btn-default">Cancel</a>
                     </div>
 
                     {!! Form::close() !!}

@@ -14,7 +14,9 @@
                         <h5 class="card-title">coste total:{{ $orders->total }}</h5>
                         <a href="{{ route( 'orders.show' , $orders->id ) }}">detalle</a>
                         @if($orders->open && $orders->deliverDate >= now()->format('d-m-Y'))
-                            <a href="{{ route( 'orders.delete' , [$orders->id , $company->id] ) }}">cancelar</a>
+                            {!! Form::model($orders,['route' => ['orders.delete',$orders->id,$company->id], 'method' => 'Delete']) !!}
+                            {!! Form::submit('Borrar') !!}
+                            {!! Form::close() !!}
                         @endif
                     </div>
                 </div>

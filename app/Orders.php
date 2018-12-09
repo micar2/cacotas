@@ -78,6 +78,7 @@ class Orders extends Model
         }
 
 
+
 // preguntar por que el id que da es el de articulo y no el de orderarticle
 
 //        $ordersArticles = OrdersArticles::where('orderId', $id)->get();

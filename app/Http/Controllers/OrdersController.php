@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use App\Company;
+use App\Http\Requests\OrderRequest;
 use App\Orders;
-use App\OrdersArticles;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\TestMail;
+use Illuminate\Http\Request;
 
 
 class OrdersController extends Controller
@@ -26,6 +25,8 @@ class OrdersController extends Controller
 
     public function store(Request $request, $companyId)
     {
+//        $request->validated();
+
         $order = Orders::create([
             'userId' => Auth::id(),
             'companyId' => $companyId,

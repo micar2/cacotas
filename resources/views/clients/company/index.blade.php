@@ -14,7 +14,10 @@
                     <h5 class="card-title">{{ $company->email }}</h5>
                     <a href="{{ route( 'orders' , $company->id ) }}">Pedidos</a>
                     <a href="{{ route( 'company.change' , $company->id ) }}">modificar</a>
-                    <a href="{{ route( 'company.delete' , $company->id ) }}">borrar</a>
+                    {{--<a href="{{ route( 'company.delete' , $company->id ) }}">borrar</a>--}}
+                    {!! Form::model($company,['route' => ['company.delete',$company->id], 'method' => 'Delete']) !!}
+                    {!! Form::submit('Borrar') !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
         @endforeach

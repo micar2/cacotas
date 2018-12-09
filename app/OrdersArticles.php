@@ -47,6 +47,27 @@ class OrdersArticles extends Model
         Orders::calcTotal($orderId);
     }
 
+    static function plussOrLess($id, $number, $ordersId,$operation)
+    {
+        $orderArticle = OrdersArticles::find($id);
+        if ($operation=='plus'){
+            Article::stockcalc($orderArticle->articleId,$number,'less');
+            $orderArticle->number += $number;
+            $orderArticle->save();
+
+        }
+        if ($operation=='less'){
+            Article::stockcalc($orderArticle->articleId,$number,'plus');
+            $orderArticle->number -= $number;
+            if ($orderArticle->number<=0){
+                return redirect()->route('ordersArticles.delete',[$id, $ordersId]);
+            }
+            $orderArticle->save();
+        }
+
+        Orders::calcTotal($ordersId);
+    }
+
 
 
 }

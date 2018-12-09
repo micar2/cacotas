@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Http\Requests\CompanyRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +22,10 @@ class CompanyController extends Controller
         return view('clients.company.create');
     }
 
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
+        $request->validated();
+
         Company::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -40,10 +44,10 @@ class CompanyController extends Controller
         return view('clients.company.update',['company' => $company, 'id'=> $id]);
     }
 
-    public function update(Request $request,$id)
+    public function update(CompanyUpdateRequest $request,$id)
     {
         $company = Company::where('id','=', $id)->first();
-
+        $request->validated();
         if ($company) {
             $company->update($request->all());
             return redirect()->route('company');

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-    {!! Form::model($company,['route' => ['company.update',$company->id], 'method' => 'Post']) !!}
+    {!! Form::model($company,['route' => ['company.update',$company->id], 'method' => 'Patch']) !!}
 
     @include('forms.company')
 
