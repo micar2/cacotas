@@ -81,7 +81,8 @@ Route::group([
     })->name('admin.welcome');
 
     //crud companies
-
+    Route::post('companies/store', 'CompanyController@store')->name('admin.companies.store');
+    Route::get('companies/create','CompanyController@create')->name('admin.companies.create');
     Route::get('companies', 'CompanyController@index')->name('admin.companies.show');
     Route::get('companies/change/{id}', 'CompanyController@change')->name('admin.companies.change');
     Route::patch('companies/update/{id}', 'CompanyController@update')->name('admin.companies.update');
@@ -123,20 +124,3 @@ Route::group([
 
 });
 
-
-
-// mail
-
-//Route::get('sendemail',function(){
-//    $data = [
-//        'name' => 'cacotas',
-//        'link' => 'http://jesuschicano.es'
-//    ];
-//
-//    Mail::send('emails.notification', $data, function($msg){
-//        $msg->from('c4c0t4s@gmail.com', 'Pato Cuack');
-//        $msg->to('munar2@hotmail.com')->subject('Notificación');
-//    });
-//    return 'el email ha sido enviado';
-//}
-//);

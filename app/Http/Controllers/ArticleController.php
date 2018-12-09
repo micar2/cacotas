@@ -15,7 +15,7 @@ class ArticleController extends Controller
 //            'selection'=>['require', new NameOrDescription()],
 //        ]);
         $articles=Article::paginate('articles', $request['selection'],$request['text'],4,$page);
-        
+
         return view('clients.article.search',['ordersId' => $ordersId, 'count' => $articles['count'], 'articles' =>$articles['items'],'page'=>$page, 'selection'=>$request['selection'], 'text' => $request['text']]);
     }
 }
