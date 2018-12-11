@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -47,16 +48,10 @@ class LoginController extends Controller
         return view('forms.login');
     }
 
-    public function getin(Request $request)
+    public function getin(LoginRequest $request)
     {
-//        request()->validate([
-//            'email'=>'required'|'email',
-//            'password'=>'required'
-//        ]);
-//        $this->validate(request(),[
-//            'email'=>'required'|'email',
-//            'password'=>'required'
-//            ]);
+        $request->validated();
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

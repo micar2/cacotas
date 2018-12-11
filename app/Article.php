@@ -11,6 +11,10 @@ class Article extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
+    protected $fillable = [
+        'name', 'reference', 'price', 'stock', 'description'
+    ];
+
     public function OrdersArticles()
     {
         return $this->hasMany(OrdersArticles::class,'articleId');

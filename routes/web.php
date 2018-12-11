@@ -8,7 +8,7 @@ Route::get('/', function(){
     return view('welcome');
 })->name('welcome');
 
-Route::get('home', ['middleware' => 'rol:admin', function(){
+Route::get('/', ['middleware' => 'rol:admin', function(){
     return view('admin.welcome');
 }] )->name('home');
 
@@ -91,6 +91,8 @@ Route::group([
 
     //crud articles
 
+    Route::post('articles/store', 'ArticleController@store')->name('admin.articles.store');
+    Route::get('articles/create','ArticleController@create')->name('admin.articles.create');
     Route::get('articles', 'ArticleController@index')->name('admin.articles.show');
     Route::get('articles/change/{id}', 'ArticleController@change')->name('admin.articles.change');
     Route::patch('articles/update/{id}', 'ArticleController@update')->name('admin.articles.update');

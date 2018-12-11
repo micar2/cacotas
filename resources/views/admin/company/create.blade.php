@@ -1,27 +1,9 @@
 @extends('admin.layouts.layout')
 @section('content')
 
-@section('links')
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('admin/css/dataTables.bootstrap.min.css') }}">
-@endsection
-@section('scripts')
-    <!-- page script -->
-    <script>
-        $(function () {
-            $('#example1').DataTable()
-            $('#example2').DataTable({
-                'paging'      : true,
-                'lengthChange': false,
-                'searching'   : false,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : false
-            })
-        })
-    </script>
-@endsection
-
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
     {!! Form::open(['route' => 'admin.companies.store', 'method' => 'Post']) !!}
         <div class="form-group col-sm-6">
             {!! Form::label('userId', 'Usuario:') !!}
@@ -31,9 +13,12 @@
 
     <div class="form-group col-sm-12">
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-        <a href="{{ route('company') }}" class="btn btn-default">Cancel</a>
+        <a href="{{ route('admin.companies.show') }}" class="btn btn-default">Cancel</a>
     </div>
 
     {!! Form::close() !!}
+        </div>
+    </div>
+</section>
 
 @endsection

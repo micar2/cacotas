@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\RegisterRequest;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -78,16 +79,9 @@ class RegisterController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-
-        \request()->validate([
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email',
-            'telephone' => 'required|numeric|min:100000000',
-            'password' => 'required|min:6',
-            'password_confirmation' => 'required|same:password',
-        ]);
+        $request->validated();
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],

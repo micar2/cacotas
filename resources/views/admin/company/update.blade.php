@@ -3,6 +3,7 @@
 
     {!! Form::model($item,['route' => ['admin.companies.update',$item->id], 'method' => 'Patch']) !!}
 
+    @include('forms.adminCompany')
     @include('forms.company')
 
     <div class="form-group col-sm-12">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin\Genaral;
 use App\Company;
-use App\Http\Requests\CompanyRequest;
+use App\Http\Requests\AdminCompanyRequest;
+use App\Http\Requests\AdminCompanyUpdateRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,13 +47,15 @@ class CompanyController extends Controller
     public function change($id)
     {
         $item = Company::find($id);
+        $users = User::pluck('name','id');
 
-        return view('admin.company.update',['item' => $item]);
+        return view('admin.company.update',['item' => $item, 'users'=>$users]);
     }
 
-    public function update(CompanyUpdateRequest $request,$id)
+    public function update(AdminCompanyUpdateRequest $request,$id)
     {
         $request->validated();
+
         $item = Company::find($id);
 
         if ($item) {

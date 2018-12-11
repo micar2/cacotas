@@ -48,7 +48,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="active"><a href="{{ route('admin.articles.show') }}"><i class="fa fa-circle-o"></i>Ver</a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i>Crear</a></li>
+                    <li><a href="{{ route('admin.articles.create') }}"><i class="fa fa-circle-o"></i>Crear</a></li>
                 </ul>
             </li>
 
