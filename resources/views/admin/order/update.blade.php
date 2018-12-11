@@ -25,13 +25,13 @@
 <section class="content-header">
     <div class="row">
         <div class="col-xs-12">
-    {!! Form::model($order,['route' => ['admin.companies.update',$order->id], 'method' => 'Post']) !!}
+    {!! Form::model($order,['route' => ['admin.orders.update',$order->id], 'method' => 'Post']) !!}
 
     @include('forms.orderAdmin')
 
     <div class="form-group col-sm-12">
         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-        <a href="" class="btn btn-default">Cancelar</a>
+        <a href="{{ route('admin.orders.show') }}" class="btn btn-default">Cancelar</a>
     </div>
 
     {!! Form::close() !!}

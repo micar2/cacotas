@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin\Genaral;
+use App\Http\Requests\AdminUserCreateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,26 @@ class UsersController extends Controller
         return view('admin.layouts.generalViewIndex', ['route'=>$route,'items' => $all['items'],'camps' => $all['camps'], 'table'=>$table]);
     }
 
+    public function create()
+    {
+        return view('admin.user.create');
+    }
+
+    public function store(AdminUserCreateRequest $request)
+    {
+
+        $request->validated();
+
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'telephone' => $request['telephone'],
+            'password' => Hash::make($request['password']),
+            'rol'=>$request['rol'],
+        ]);
+        return redirect()->route('admin.users.show');
+    }
+
     public function change($id)
     {
         $item = User::find($id);
@@ -24,7 +45,7 @@ class UsersController extends Controller
         return view('admin.user.update',['item' => $item]);
     }
 
-    public function update(Request $request,$id)
+    public function update(AdminUserCreateRequest $request,$id)
     {
         $item = User::find($id);
 

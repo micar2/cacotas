@@ -1,7 +1,7 @@
 
 <div class="form-group col-sm-6">
-    {!! Form::label('companyId', 'Id de compañia:') !!}
-    {!! Form::text('companyId', null, ['class' => 'form-control']) !!}
+    {!! Form::label('companyId', 'Compañia:') !!}
+    {!! Form::select('companyId', $companies,null , ['class' => 'form-control']) !!}
     @if($errors->has('companyId'))
         <div class="error">{{ $errors->first('companyId') }}</div>
     @endif

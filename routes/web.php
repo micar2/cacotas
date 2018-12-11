@@ -117,6 +117,8 @@ Route::group([
 
     //crud users
 
+    Route::post('users/store', 'UsersController@store')->name('admin.users.store');
+    Route::get('users/create','UsersController@create')->name('admin.users.create');
     Route::get('users', 'UsersController@index')->name('admin.users.show');
     Route::get('users/change/{id}', 'UsersController@change')->name('admin.users.change');
     Route::patch('users/update/{id}', 'UsersController@update')->name('admin.users.update');

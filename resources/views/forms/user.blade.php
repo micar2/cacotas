@@ -34,9 +34,9 @@
     @endif
 </div>
 <div class="form-group col-sm-6">
-    {!! Form::label('passwordR', 'Confirmar Contraseña:') !!}
-    {!! Form::password('passwordR', null, ['class' => 'form-control']) !!}
-    @if($errors->has('passwordR'))
+    {!! Form::label('password_confirmation', 'Confirmar Contraseña:') !!}
+    {!! Form::password('password_confirmation', null, ['class' => 'form-control']) !!}
+    @if($errors->has('password_confirmation'))
         <div class="error">{{ $errors->first('passwordR') }}</div>
     @endif
 </div>
