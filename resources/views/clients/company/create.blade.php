@@ -3,11 +3,6 @@
 
     {!! Form::open(['route' => 'company.store', 'method' => 'Post']) !!}
 
-    <div class="form-group col-sm-6">
-        {!! Form::label('name', 'Nombre:') !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    </div>
-
    @include('forms.company')
 
     <div class="form-group col-sm-12">

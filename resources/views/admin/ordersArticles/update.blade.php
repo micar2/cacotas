@@ -1,7 +1,8 @@
 @extends('admin.layouts.layout')
 @section('content')
-    <section class="content-header">
+    <section class="content">
         <div class="row">
+            <div class="col-xs-12">
         {!! Form::model($item,['route' => ['admin.ordersArticles.update',$item->id], 'method' => 'Patch']) !!}
 
         @include('forms.ordersArticlesAdmin')
@@ -12,6 +13,7 @@
         </div>
 
         {!! Form::close() !!}
+            </div>
         </div>
     </section>
 

@@ -26,6 +26,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'deliverDate' => ['require','date_format:"d/m/Y"', new MinTomorrow()],
+            'companyId'=> 'required|numeric'
         ];
     }
 }

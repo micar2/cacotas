@@ -23,12 +23,11 @@ class OrdersController extends Controller
         return view('clients.orders.create',['companyId' => $id]);
     }
 
-    public function store(Request $request, $companyId)
+    public function store(OrderRequest $request, $companyId)
     {
-//        $request->validated();
+        $request->validated();
 
         $order = Orders::create([
-            'userId' => Auth::id(),
             'companyId' => $companyId,
             'deliverDate' => $request['deliverDate'],
             'open' => true,

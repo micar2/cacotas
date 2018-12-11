@@ -5,14 +5,14 @@
     <div class="form-group col-sm-6">
         {!! Form::label('email', 'E-mail:') !!}
         {!! Form::text('email', null, ['class' => 'form-control']) !!}
-        @if($errors->has('name'))
+        @if($errors->has('email'))
             <div class="error">{{ $errors->first('email') }}</div>
         @endif
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label('password', 'Contraseña:') !!}
         {!! Form::password('password', null, ['class' => 'form-control']) !!}
-        @if($errors->has('name'))
+        @if($errors->has('password'))
             <div class="error">{{ $errors->first('password') }}</div>
         @endif
     </div>

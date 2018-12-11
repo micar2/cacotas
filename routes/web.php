@@ -8,9 +8,6 @@ Route::get('/', function(){
     return view('welcome');
 })->name('welcome');
 
-Route::get('/', ['middleware' => 'rol:admin', function(){
-    return view('admin.welcome');
-}] )->name('home');
 
 //register
 
@@ -101,6 +98,8 @@ Route::group([
 
     //crud orders
 
+    Route::post('orders/store', 'OrdersController@store')->name('admin.orders.store');
+    Route::get('orders/create','OrdersController@create')->name('admin.orders.create');
     Route::get('orders', 'OrdersController@index')->name('admin.orders.show');
     Route::get('orders/change/{id}', 'OrdersController@change')->name('admin.orders.change');
     Route::post('orders/update/{id}', 'OrdersController@update')->name('admin.orders.update');
