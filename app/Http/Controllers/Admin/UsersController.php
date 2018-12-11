@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin\Genaral;
 use App\Http\Requests\AdminUserCreateRequest;
+use App\Http\Requests\AdminUserUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -45,8 +46,10 @@ class UsersController extends Controller
         return view('admin.user.update',['item' => $item]);
     }
 
-    public function update(AdminUserCreateRequest $request,$id)
+    public function update(AdminUserUpdateRequest $request,$id)
     {
+        $request->validated();
+
         $item = User::find($id);
 
         if ($item) {
