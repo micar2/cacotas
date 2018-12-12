@@ -85,7 +85,7 @@
 <body>
     <table width="100%" class="tabla1">
         <tr>
-            <td width="73%" align="center"><img id="logo" src="{{ asset('images/pato.jpg') }}" alt="" width="auto" height="57"></td>
+            <td width="73%" align="center"><img id="logo" src="{{ asset('logo.png') }}" alt="" width="auto" height="57"></td>
             <td width="27%" rowspan="3" align="center" style="padding-right:0">
                 <table width="100%">
                     <tr>

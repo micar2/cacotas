@@ -75,12 +75,22 @@
             {{--</h1>--}}
 
             {{--<div class="home-content__buttons">--}}
-                {{--<a href="#contact" class="smoothscroll btn btn--stroke">--}}
-                    {{--Start a Project--}}
-                {{--</a>--}}
-                {{--<a href="#about" class="smoothscroll btn btn--stroke">--}}
-                    {{--More About Us--}}
-                {{--</a>--}}
+                {{--@if(Auth::guest())--}}
+                    {{--<a href="{{ route('form.login') }}" class="smoothscroll btn btn--stroke">--}}
+                        {{--Entra--}}
+                    {{--</a>--}}
+                    {{--<a href="{{ route("register.create") }}" class="smoothscroll btn btn--stroke">--}}
+                        {{--Registrate--}}
+                    {{--</a>--}}
+                {{--@endif--}}
+                {{--@if(Auth::check())--}}
+                        {{--<a href="{{ route('company') }}" class="smoothscroll btn btn--stroke">--}}
+                            {{--Entra--}}
+                        {{--</a>--}}
+                        {{--<a href="{{ route("logout") }}" class="smoothscroll btn btn--stroke">--}}
+                            {{--Registrate--}}
+                        {{--</a>--}}
+                 {{--@endif--}}
             {{--</div>--}}
 
         {{--</div>--}}
@@ -149,14 +159,6 @@
 
             <h4>Get Notified</h4>
             <p>Quia quo qui sed odit. Quaerat voluptas autem necessitatibus vitae aut non alias sed quia. Ut itaque enim optio ut excepturi deserunt iusto porro.</p>
-
-            <div class="subscribe-form">
-                <form id="mc-form" class="group" novalidate="true">
-                    <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
-                    <input type="submit" name="subscribe" value="Subscribe">
-                    <label for="mc-email" class="subscribe-message"></label>
-                </form>
-            </div>
 
         </div>
 

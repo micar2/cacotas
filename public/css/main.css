@@ -2056,6 +2056,39 @@ html.no-csstransitions .home-content__main {
     }
 }
 
+/*================================================================================================
+CAMBIOS FUERA DE PLANTILLA
+ ================================================================================================*/
+.boton{
+    border-radius: 4px!important;
+    border:solid greenyellow 2px!important;
+    padding: 2px 10px!important;
+}
+.articulo{
+    color: greenyellow!important;
+    background-color: #1b6d85!important;
+}
+.error{
+    color: rebeccapurple;
+    font-size: 22px;
+    font-weight: bold;
+    border: solid 4px red;
+    background-color: darkred;
+}
+.buscar{
+    color: greenyellow!important;
+    background-color: #39b54a!important;
+}
+.paginacion{
+    display: flex!important;
+    flex-wrap: wrap!important;
+}
+
+
+/*================================================================================================
+FIN CAMBIOS FUERA DE PLANTILLA
+ ================================================================================================*/
+
 
 /* ------------------------------------------------------------------- 
  * responsive:

@@ -3,7 +3,7 @@
     <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
 
     <div class="header-nav__content">
-        <h3>Navigation</h3>
+        <h3>Menu</h3>
 
         <ul class="header-nav__list">
             <li><a href="{{ route('welcome') }}">Inicio</a></li>
@@ -16,26 +16,6 @@
                 <li><a href="{{ route('company') }}">Empresa</a></li>
                 <li><a href="{{ route('logout') }}" >Salir</a></li>
             @endif
-        </ul>
-
-        <p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>
-
-        <ul class="header-nav__social">
-            <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-behance"></i></a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-            </li>
         </ul>
 
     </div> <!-- end header-nav__content -->
