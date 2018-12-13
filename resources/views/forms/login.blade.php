@@ -1,25 +1,68 @@
 @extends('layouts.layout')
 @section('content')
+    <section id="contact" class="s-contact">
 
-    {!! Form::open(['route' => 'login', 'method' => 'Post']) !!}
-    <div class="form-group col-sm-6">
-        {!! Form::label('email', 'E-mail:') !!}
-        {!! Form::text('email', null, ['class' => 'form-control']) !!}
-        @if($errors->has('email'))
-            <div class="error">{{ $errors->first('email') }}</div>
-        @endif
-    </div>
-    <div class="form-group col-sm-6">
-        {!! Form::label('password', 'Contraseña:') !!}
-        {!! Form::password('password', null, ['class' => 'form-control']) !!}
-        @if($errors->has('password'))
-            <div class="error">{{ $errors->first('password') }}</div>
-        @endif
-    </div>
-    <div class="form-group col-sm-12">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-        <a href="{!! route('login') !!}" class="btn btn-default">Cancel</a>
-    </div>
+        <div class="overlay"></div>
+        <div class="contact__line"></div>
 
-    {!! Form::close() !!}
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Registrarse</h3>
+            </div>
+        </div>
+
+        <div class="row contact-content" data-aos="fade-up">
+
+            <div class="formulario">
+
+                <h3 class="h6">Rellene los campos</h3>
+                {!! Form::open(['route' => 'login', 'method' => 'Post','name'=>'contactForm','class'=>'contactForm']) !!}
+
+                <div class="form-field">
+                    @if($errors->has('email'))
+                        <div class="error">{{ $errors->first('email') }}</div>
+                    @endif
+                    {!! Form::label('email', 'E-mail:') !!}
+                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+
+                </div>
+
+                <div class="form-field">
+                    @if($errors->has('password'))
+                        <div class="error">{{ $errors->first('password') }}</div>
+                    @endif
+                    {!! Form::label('password', 'Contraseña:') !!}
+                    {!! Form::password('password', null, ['class' => 'form-control']) !!}
+
+                </div>
+                <br/>
+                <br/>
+                <div class="form-field">
+                    {!! Form::submit('Entrar', ['class' => 'full-width btn--primary']) !!}
+
+                </div>
+                <div class="form-field">
+                    <a href="{{ route('login') }}" >
+                        <div class="cancelar">Cancelar</div>
+                    </a>
+                </div>
+
+            {!! Form::close() !!}
+
+            <!-- contact-warning -->
+                <div class="message-warning">
+                    Something went wrong. Please try again.
+                </div>
+
+                <!-- contact-success -->
+                <div class="message-success">
+                    Your message was sent, thank you!<br>
+                </div>
+
+            </div> <!-- end contact-primary -->
+
+        </div> <!-- end contact-content -->
+
+    </section> <!-- end s-contact -->
+
 @endsection

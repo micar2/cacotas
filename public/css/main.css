@@ -2083,6 +2083,29 @@ CAMBIOS FUERA DE PLANTILLA
     display: flex!important;
     flex-wrap: wrap!important;
 }
+.cancelar {
+    width: 100%;
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+    align: center;
+    text-align: center;
+    color: #fff;
+    font-family: "montserrat-medium", sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    height: 5.4rem;
+    line-height: calc(5.4rem - .4rem);
+    padding: 0 3rem;
+    margin: 0 .3rem 1.2rem 0;
+}
+.formulario{
+    padding: 20px 20%;
+}
+
+.botonesCompañias form{
+    width: 33.3333%!important;
+}
 
 
 /*================================================================================================
