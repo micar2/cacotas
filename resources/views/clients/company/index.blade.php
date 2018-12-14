@@ -21,51 +21,34 @@
                         acumulado:{{ $company->debt }}€<br/>
                         email:{{ $company->email }}</p>
                         <div class="botonesCompañias">
-                            {!! Form::model($company,['route' => ['orders',$company->id], 'method' => 'Get']) !!}
-                            {!! Form::submit('Pedidos') !!}
-                            {!! Form::close() !!}
+                            <div>
+                                {!! Form::model($company,['route' => ['orders',$company->id], 'method' => 'Get']) !!}
+                                {!! Form::submit('Pedidos') !!}
+                                {!! Form::close() !!}
+                            </div>
 
-                            {!! Form::model($company,['route' => ['company.change',$company->id], 'method' => 'Get']) !!}
-                            {!! Form::submit('Modificar') !!}
-                            {!! Form::close() !!}
+                            <div>
+                                {!! Form::model($company,['route' => ['company.change',$company->id], 'method' => 'Get']) !!}
+                                {!! Form::submit('Modificar') !!}
+                                {!! Form::close() !!}
+                            </div>
 
-                            {!! Form::model($company,['route' => ['company.delete',$company->id], 'method' => 'Delete']) !!}
-                            {!! Form::submit('Borrar') !!}
-                            {!! Form::close() !!}
+                            <div>
+                                {!! Form::model($company,['route' => ['company.delete',$company->id], 'method' => 'Delete']) !!}
+                                {!! Form::submit('Borrar') !!}
+                                {!! Form::close() !!}
+                            </div>
+
                         </div>
-
-
-
-
                 </div>
             </div>
             @endforeach
+            <div>
+                <a class="boton verde abajoIzq" href="{{ route('welcome') }}">Volver</a>
+            </div>
         </div> <!-- end services-list -->
 
     </section> <!-- end s-services -->
-<nav>
-    <a href="{{ route('company.create') }}">crear empresa</a>
-</nav>
-<div class="container">
-    <div class="row">
-        @foreach($companies as $company)
-            <div class="col-12 card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $company->name }}</h5>
-                    <h5 class="card-title">{{ $company->telephone }}</h5>
-                    <h5 class="card-title">acumulado:{{ $company->debt }}€</h5>
-                    <h5 class="card-title">{{ $company->email }}</h5>
-                    <a href="{{ route( 'orders' , $company->id ) }}">Pedidos</a>
-                    <a href="{{ route( 'company.change' , $company->id ) }}">modificar</a>
-                    {{--<a href="{{ route( 'company.delete' , $company->id ) }}">borrar</a>--}}
-                    {!! Form::model($company,['route' => ['company.delete',$company->id], 'method' => 'Delete']) !!}
-                    {!! Form::submit('Borrar') !!}
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        @endforeach
-    </div>
-</div>
 
 
 @endsection

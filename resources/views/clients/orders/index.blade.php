@@ -13,7 +13,7 @@
                         <h5 class="card-title">para el{{ $orders->deliverDate }}</h5>
                         <h5 class="card-title">coste total:{{ $orders->total }}</h5>
                         <a href="{{ route( 'orders.show' , $orders->id ) }}">detalle</a>
-                        @if($orders->open && $orders->deliverDate >= now()->format('d-m-Y'))
+                        @if($orders->open && Carbon\Carbon::createFromFormat('d-m-Y', $orders->deliverDate)>= Carbon\Carbon::now())
                             {!! Form::model($orders,['route' => ['orders.delete',$orders->id,$company->id], 'method' => 'Delete']) !!}
                             {!! Form::submit('Borrar') !!}
                             {!! Form::close() !!}
@@ -23,5 +23,5 @@
             @endforeach
         </div>
     </div>
-
+    <a href="{{ route('company', $company->id) }}">Volver</a>
 @endsection
