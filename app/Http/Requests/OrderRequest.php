@@ -27,7 +27,7 @@ class OrderRequest extends FormRequest
     {
 
         return [
-            'deliverDate' => ['required','date_format:"d-m-Y"', new MinTomorrow()],
+            'deliverDate' => ['required','date_format:"d-m-Y"'],
         ];
     }
 }

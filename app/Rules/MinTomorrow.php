@@ -26,12 +26,17 @@ class MinTomorrow implements Rule
      */
     public function passes($attribute, $value)
     {
-
-        if (Carbon::createFromFormat('d-m-Y', $value)<= Carbon::now()){
-            return false;
+        if (Carbon::createFromFormat('d-m-Y', $value)){
+            if (Carbon::createFromFormat('d-m-Y', $value)<= Carbon::now()){
+                return false;
+            }else{
+                return true;
+            }
         }else{
-            return true;
+            return false;
         }
+
+
     }
 
     /**

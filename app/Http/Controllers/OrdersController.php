@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Http\Requests\OrderRequest;
 use App\Orders;
+use App\Rules\MinTomorrow;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\TestMail;
 use Illuminate\Http\Request;
@@ -26,7 +27,9 @@ class OrdersController extends Controller
     public function store(OrderRequest $request, $companyId)
     {
         $request->validated();
-
+        \request()->validate([
+            'deliverDate' => new MinTomorrow()
+        ]);
         $order = Orders::create([
             'companyId' => $companyId,
             'deliverDate' => $request['deliverDate'],
