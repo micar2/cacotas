@@ -9,7 +9,9 @@
                         <h5 class="card-title">para el {{ Carbon\Carbon::parse($orders->deliverDate)->format('d-m-Y') }}</h5>
 
                         @if($orders->open && Carbon\Carbon::parse($orders->deliverDate)->format('d-m-Y') > now()->format('d-m-Y'))
-                            <a href="{{ route( 'orders.delete' , [$orders->id,$company->id]) }}">cancelar</a>
+                            {!! Form::model($orders,['route' => ['orders.delete',$orders->id,$company->id], 'method' => 'Delete']) !!}
+                            {!! Form::submit('cancelar pedido') !!}
+                            {!! Form::close() !!}
                         @endif
 
                     </div>
