@@ -34,6 +34,7 @@ class Article extends Model
     }
     static function stockcalc($articleId, $number, $operation)
     {
+
         if($operation=='plus'){
             $article = Article::find($articleId);
             $article->stock += $number;

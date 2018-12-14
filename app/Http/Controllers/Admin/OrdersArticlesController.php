@@ -87,13 +87,10 @@ class OrdersArticlesController extends Controller
     {
         $item = OrdersArticles::withTrashed()->find($id);
         $orderId = $item->orderId;
-
-//        if ($orderArticle=OrdersArticles::where('articleId','=',$item->articleId)->first()){
-//            OrdersArticles::plus($orderArticle->id, $item->number, $orderId, 'plus');
-//        }
         OrdersArticles::onlyTrashed()->find($id)->restore();
-        Article::stockcalc($item->aticleId,$item->number,'less');
+        Article::stockcalc($item->articleId,$item->number,'less');
         Orders::calcTotal($orderId);
+
         return redirect()->route('admin.orders.change',['id'=>$orderId]);
     }
 }

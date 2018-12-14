@@ -14,6 +14,7 @@ class OrderRequest extends FormRequest
      */
     public function authorize()
     {
+
         return auth()->check();
     }
 
@@ -24,9 +25,9 @@ class OrderRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'deliverDate' => ['require','date_format:"d/m/Y"', new MinTomorrow()],
-            'companyId'=> 'required|numeric'
+            'deliverDate' => ['required','date_format:"d-m-Y"', new MinTomorrow()],
         ];
     }
 }

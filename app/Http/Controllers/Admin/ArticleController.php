@@ -46,7 +46,7 @@ class ArticleController extends Controller
         return view('admin.article.update',['item' => $item]);
     }
 
-    public function update(Request $request,$id)
+    public function update(AdminArticleCreateRequest $request,$id)
     {
         $item = Article::find($id);
 

@@ -48,16 +48,18 @@ class LoginController extends Controller
         return view('forms.login');
     }
 
-    public function getin(LoginRequest $request)
+    public function getin(Request $request)
     {
-        $request->validated();
+//        \request()->validate([
+//            'email'=>'required|email|exists:users.email',
+//            'password'=>'required',
+//        ]);
+
 
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             $rol = User::where('email', '=', $request['email'])->first();
-            //$request->Session()->put('rol', $request['rol']);
-            //Session::put('rol', $request['rol']);
 
             if ($rol->rol=='admin'){
                 return view('admin.welcome');
@@ -67,7 +69,7 @@ class LoginController extends Controller
             }
 
         }else{
-            return view('forms.login');
+            return view('forms.login',['failAuthenticated'=>'Contraseña o email incorrecto']);
         }
 
     }

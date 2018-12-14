@@ -14,7 +14,9 @@
         <div class="row contact-content" data-aos="fade-up">
 
             <div class="formulario">
-
+                @if(isset($failAuthenticated))
+                    <h3 class="h6">{{ $failAuthenticated }}</h3>
+                    @endif
                 <h3 class="h6">Rellene los campos</h3>
                 {!! Form::open(['route' => 'login', 'method' => 'Post','name'=>'contactForm','class'=>'contactForm']) !!}
 

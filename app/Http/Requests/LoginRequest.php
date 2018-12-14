@@ -2,6 +2,11 @@
 
 namespace App\Http\Requests;
 
+
+
+
+use App\Rules\verificationPassword;
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -13,7 +18,10 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+//        if(User::where('email',$this->email)->where('password',bcrypt($this->password))->first()){
+            return true;
+//        }
+//        return false;
     }
 
     /**
@@ -23,9 +31,12 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
+
+
+
         return [
-            'email'=>'required|email',
-            'password'=>'required'
+            'email'=>'required|email|exists:users.email',
+            'password'=>['required']
         ];
     }
 }

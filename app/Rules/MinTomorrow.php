@@ -26,7 +26,8 @@ class MinTomorrow implements Rule
      */
     public function passes($attribute, $value)
     {
-        if ($value->format('d')<= Carbon::now()->format('d')){
+
+        if (Carbon::createFromFormat('d-m-Y', $value)<= Carbon::now()){
             return false;
         }else{
             return true;
@@ -40,6 +41,6 @@ class MinTomorrow implements Rule
      */
     public function message()
     {
-        return 'The schedule has to be from tomorrow on.';
+        return 'La fecha tiene que ser posterior al dia de hoy';
     }
 }
