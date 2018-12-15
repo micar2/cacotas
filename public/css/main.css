@@ -2144,6 +2144,23 @@ input[type="submit"]{
     left: 10%;
     margin-top: 40px;
 }
+table input[type="submit"]{
+    line-height: 2!important;
+    margin-top: 36px!important;
+
+}
+table td, table th{
+    text-align: center;
+}
+.espacioabajo{
+    margin-bottom: 40px!important;
+}
+@media (max-width: 1000px){
+ .scroll{
+     overflow:scroll!important;
+ }
+}
+
 
 /*================================================================================================
 FIN CAMBIOS FUERA DE PLANTILLA

@@ -1,27 +1,49 @@
 @extends('layouts.layout')
 @section('content')
 
-    <nav>
-        <a href="{{ route('orders.create', $company->id) }}">crear pedido</a>
-    </nav>
-    <div class="container">
-        <div class="row">
+    <section id='services' class="s-services">
+
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <a href="{{ route('orders.create', $company->id) }}"><h3 class="subhead">crear pedido</h3></a>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row services-list block-1-2 block-tab-full">
             @foreach($orderss as $orders)
-                <div class="col-12 card">
-                    <div class="card-body">
-                        <h5 class="card-title">de {{ $company->name }}</h5>
-                        <h5 class="card-title">para el{{ $orders->deliverDate }}</h5>
-                        <h5 class="card-title">coste total:{{ $orders->total }}</h5>
-                        <a href="{{ route( 'orders.show' , $orders->id ) }}">detalle</a>
-                        @if($orders->open && Carbon\Carbon::createFromFormat('d-m-Y', $orders->deliverDate)>= Carbon\Carbon::now())
-                            {!! Form::model($orders,['route' => ['orders.delete',$orders->id,$company->id], 'method' => 'Delete']) !!}
-                            {!! Form::submit('Borrar') !!}
-                            {!! Form::close() !!}
-                        @endif
+                <div class="col-block service-item" data-aos="fade-up">
+                    <div class="service-icon">
+                        <i class="icon-paint-brush"></i>
+                    </div>
+                    <div class="service-text">
+                        <h3 class="h2">{{ $company->name }}</h3>
+                        <p>
+                            de {{ $company->name }}<br/>
+                            para el{{ $orders->deliverDate }}<br/>
+                            coste total:{{ $orders->total }}</p>
+                        <div class="botonesCompañias">
+                            <div>
+                                {!! Form::model($company,['route' => ['orders.show' , $orders->id], 'method' => 'Get']) !!}
+                                {!! Form::submit('Detalle') !!}
+                                {!! Form::close() !!}
+                            </div>
+
+                            @if($orders->open && Carbon\Carbon::createFromFormat('d-m-Y', $orders->deliverDate)>= Carbon\Carbon::now())
+                            <div>
+                                    {!! Form::model($orders,['route' => ['orders.delete',$orders->id,$company->id], 'method' => 'Delete']) !!}
+                                    {!! Form::submit('Borrar') !!}
+                                    {!! Form::close() !!}
+                            </div>
+                            @endif
+
+                        </div>
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
-    <a href="{{ route('company', $company->id) }}">Volver</a>
+            <div>
+                <a class="boton verde abajoIzq" href="{{ route('company', $company->id) }}">Volver</a>
+            </div>
+        </div> <!-- end services-list -->
+
+    </section> <!-- end s-services -->
 @endsection

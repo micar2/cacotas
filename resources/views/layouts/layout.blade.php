@@ -45,7 +45,7 @@
 
     <div class="header-logo">
         <a class="site-logo" href="{{route('welcome')}}">
-            <img src="images/logo.png" alt="Homepage">
+            <img src="{{ asset('images\logo.png') }}" alt="Logo">
         </a>
     </div>
 
@@ -173,7 +173,7 @@
             </div>
 
             <div class="go-top">
-                <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true">^</i></a>
             </div>
         </div>
 
