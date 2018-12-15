@@ -13,7 +13,7 @@ class CreateOrdersArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders_Articles', function (Blueprint $table) {
+        Schema::create('orders_articles', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('articleId');
             $table->foreign('articleId')->references('id')->on('articles');
@@ -34,6 +34,6 @@ class CreateOrdersArticlesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('orders_articles');
     }
 }

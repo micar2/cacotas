@@ -33,6 +33,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('OrdersTableSeeder');
+        Schema::dropIfExists('orders');
     }
 }
