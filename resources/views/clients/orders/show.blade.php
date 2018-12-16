@@ -7,7 +7,7 @@
                 <h2 class="display-1 display-1--light">Pedido</h2>
             </div>
         </div> <!-- end section-header -->
-        <div class="row scroll">
+        <div class="row espacioabajo">
 
             <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
 
@@ -113,7 +113,6 @@
                         <td><a class="boton verde" target="_blank" href="{{ action('PdfController@getGenerar',['accion'=>'ver','tipo'=>'digital','orderId'=>$orders->id]) }}">Ver Factura</a></td>
                         <td><a class="boton verde" target="_blank" href="{{ action('PdfController@getGenerar',['accion'=>'descargar','tipo'=>'digital','orderId'=>$orders->id]) }}">Descargar Factura</a></td>
                     @endif
-                        <td><a class="boton verde" href="{{ route( 'orders' , $company->id ) }}">atras</a></td>
                 </tr>
             </table>
         </div>
