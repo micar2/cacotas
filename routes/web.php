@@ -20,7 +20,7 @@ Route::get('form.login', 'Auth\LoginController@index')->name('form.login');
 Route::post('login', 'Auth\LoginController@getin')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 //articles
-Route::get('articles/show', 'ArticleController@show')->name('articles.show.vue');
+//Route::get('articles/show', 'ArticleController@show')->name('articles.show.vue');
 //---------client-----------//
 
 Route::group([
