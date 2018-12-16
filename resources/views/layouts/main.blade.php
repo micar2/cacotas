@@ -7,7 +7,7 @@
 
         <ul class="header-nav__list">
             <li><a href="{{ route('welcome') }}">Inicio</a></li>
-
+            <li><a href="{{ route('articles.show.vue') }}">Articulos</a></li>
             @if(Auth::guest())
                 <li><a href="{{ route('register.create') }}" >Registrarse</a></li>
                 <li><a href="{{ route('form.login') }}" >Entrar</a></li>

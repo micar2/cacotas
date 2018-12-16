@@ -2155,6 +2155,7 @@ table td, table th{
 .espacioabajo{
     margin-bottom: 40px!important;
 }
+
 @media (max-width: 1000px){
  .scroll{
      overflow:scroll!important;

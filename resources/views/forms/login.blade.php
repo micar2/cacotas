@@ -7,7 +7,7 @@
 
         <div class="row section-header" data-aos="fade-up">
             <div class="col-full">
-                <h3 class="subhead">Registrarse</h3>
+                <h3 class="subhead">Entrar</h3>
             </div>
         </div>
 

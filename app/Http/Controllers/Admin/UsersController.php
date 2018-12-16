@@ -53,8 +53,16 @@ class UsersController extends Controller
         $item = User::find($id);
 
         if ($item) {
-
-            $item->update($request->all());
+            if ($request['password'] != ''){
+                $item->update($request->all());
+            }else{
+                $item->update([
+                    'name' => $request['name'],
+                    'email' => $request['email'],
+                    'telephone' => $request['telephone'],
+                    'rol'=>$request['rol'],
+                ]);
+            }
 
             return redirect()->route('admin.users.show');
         } else {

@@ -28,8 +28,8 @@ class AdminUserUpdateRequest extends FormRequest
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users,email,'.array_slice(explode('/', Request::path()), -1)[0],
             'telephone' => 'required|numeric|min:100000000',
-            'password' => 'required|min:6',
-            'password_confirmation' => 'required|same:password',
+            'password' => '',
+            'password_confirmation' => 'same:password',
             'rol'=>'required|exists:users,rol',
         ];
     }

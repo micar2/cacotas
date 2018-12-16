@@ -58,7 +58,7 @@ class Orders extends Model
 
         return true;
     }
-    //cambiarlo con una buena peticion
+
     static function getArticles($id, $delete=false)
     {
         if($delete){
@@ -76,21 +76,6 @@ class Orders extends Model
                     'orders_articles.updated_at as updated_at',
                     'orders_articles.created_at as created_at')->get();
         }
-
-
-
-// preguntar por que el id que da es el de articulo y no el de orderarticle
-
-//        $ordersArticles = OrdersArticles::where('orderId', $id)->get();
-//        foreach ($ordersArticles as $ordersArticle){
-//            $article =Article::find($ordersArticle->articleId);
-//            $camps = array_keys($article->toArray());
-//            foreach ($camps as $camp){
-//                if ($camp != 'id' || $camp != 'deleted_at'|| $camp != 'created_at'|| $camp != 'updated_at'){
-//                    $ordersArticle = array_add($ordersArticle, $camp, $article->$camp);
-//                }
-//            }
-//        }
 
         return $ordersArticles;
     }
