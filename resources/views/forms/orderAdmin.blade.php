@@ -13,13 +13,13 @@
         <div class="error">{{ $errors->first('deliverDate') }}</div>
     @endif
 </div>
-<div class="form-group col-sm-6">
-    {!! Form::label('total', 'Coste:') !!}
-    {!! Form::text('total', null, ['class' => 'form-control']) !!}
-    @if($errors->has('total'))
-        <div class="error">{{ $errors->first('total') }}</div>
-    @endif
-</div>
+{{--<div class="form-group col-sm-6">--}}
+    {{--{!! Form::label('total', 'Coste:') !!}--}}
+    {{--{!! Form::text('total', null, ['class' => 'form-control']) !!}--}}
+    {{--@if($errors->has('total'))--}}
+        {{--<div class="error">{{ $errors->first('total') }}</div>--}}
+    {{--@endif--}}
+{{--</div>--}}
 <div class="form-group col-sm-6">
     {!! Form::label('charged', 'Cobrado:') !!}
     {!! Form::select('charged', [1 => 'si', 0 => 'no'], null) !!}

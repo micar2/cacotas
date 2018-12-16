@@ -14,7 +14,7 @@ class OrdersArticles extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'number', 'orderId', 'articleId'
+        'number', 'orderId', 'articleId','prepare'
     ];
 
     public function article()

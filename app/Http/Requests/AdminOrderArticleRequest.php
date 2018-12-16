@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminOrderCreateRequest extends FormRequest
+class AdminOrderArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class AdminOrderCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'deliverDate' => 'required|date_format:"d-m-Y"',
-            'companyId'=> 'required|numeric',
-            'charged' => 'required|boolean',
-            'open' => 'required|boolean',
-            'total'=> ''
+            'articleId'=>'required',
+            'number'=> 'required',
+            'prepare' => 'required',
         ];
     }
 }

@@ -61,13 +61,13 @@
                        <td class="botonesCompañias">
 
                            <div>
-                               {!! Form::model($ordersArticle,['route' => ['ordersArticles.plusLess',$ordersArticle->id,1,$orders->id,'plus'], 'method' => 'Patch']) !!}
+                               {!! Form::model($ordersArticle,['route' => ['ordersArticles.plusLess',$ordersArticle->id,1,$orders->id,'plus'], 'method' => 'get']) !!}
                                {!! Form::submit('+') !!}
                                {!! Form::close() !!}
                            </div>
 
                         <div>
-                            {!! Form::model($ordersArticle,['route' => ['ordersArticles.plusLess',$ordersArticle->id,1,$orders->id,'less'], 'method' => 'Patch']) !!}
+                            {!! Form::model($ordersArticle,['route' => ['ordersArticles.plusLess',$ordersArticle->id,1,$orders->id,'less'], 'method' => 'get']) !!}
                             {!! Form::submit('-') !!}
                             {!! Form::close() !!}
                         </div>

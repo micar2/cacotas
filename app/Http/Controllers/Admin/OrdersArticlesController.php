@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin\Genaral;
 use App\Article;
+use App\Http\Requests\AdminOrderArticleRequest;
 use App\Orders;
 use App\OrdersArticles;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 
 class OrdersArticlesController extends Controller
 {
@@ -26,10 +27,11 @@ class OrdersArticlesController extends Controller
         return view('admin.ordersArticles.create',['articles'=>$articles,'orderId'=>$orderId]);
     }
 
-    public function store(Request $request,$orderId)
+    public function store(AdminOrderArticleRequest $request,$orderId)
     {
-        if ($ordersArticles = OrdersArticles::where('articleId', $request['articleId'] )->where('orderId', $orderId)->first()){
 
+
+        if ($ordersArticles = OrdersArticles::where('articleId', $request['articleId'] )->where('orderId', $orderId)->first()){
             OrdersArticles::plus($ordersArticles->id, $request['number'], $orderId, 'plus');
             return redirect()->route('admin.orders.change',['id'=>$orderId]);
         }
@@ -40,6 +42,7 @@ class OrdersArticlesController extends Controller
             'number' => $request['number'],
             'prepare' => $request['prepare'],
         ]);
+
         Article::stockcalc($item->articleId,$item->number,'less');
         Orders::calcTotal($orderId);
         return redirect()->route('admin.orders.change',$orderId);
@@ -55,13 +58,26 @@ class OrdersArticlesController extends Controller
         return view('admin.ordersArticles.update',['item' => $item, 'articles'=>$articles]);
     }
 
-    public function update(Request $request,$id)
+    public function update(AdminOrderArticleRequest $request,$id)
     {
+
+
         $item = OrdersArticles::find($id);
+        $articleId = $item->articleId;
         $orderId = $item->orderId;
+        $number=$item->number;
         if($item->number!=$request['number']):Orders::calcTotal($orderId);
-            if($item->number<$request['number']):Article::stockcalc($item->aticleId,$item->number,'less');endif;
-            if($item->number>$request['number']):Article::stockcalc($item->aticleId,$item->number,'plus');endif;
+
+
+            if($number<$request['number']) {
+
+                Article::stockcalc($articleId,$request['number']-$number,'less');
+            }
+            if($number>$request['number']) {
+
+                Article::stockcalc($articleId,$number-$request['number'],'plus');
+            }
+
         endif;
         if ($item) {
             $item->update($request->all());

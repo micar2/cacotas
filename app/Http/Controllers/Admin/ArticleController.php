@@ -56,7 +56,7 @@ class ArticleController extends Controller
 
             return redirect()->route('admin.articles.show');
         } else {
-            return Utils::reportarError('Error al intentar editas la empresa');
+            return Utils::reportarError('Error al intentar editas el articulo');
         }
 
     }

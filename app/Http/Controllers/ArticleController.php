@@ -19,14 +19,14 @@ class ArticleController extends Controller
         return view('clients.article.search',['ordersId' => $ordersId, 'count' => $articles['count'], 'articles' =>$articles['items'],'page'=>$page, 'selection'=>$request['selection'], 'text' => $request['text']]);
     }
 
-    public function show()
-    {
-        return view('clients.article.vue');
-    }
-
-    public function all()
-    {
-        $articles = Article::all()->get();
-        return $articles;
-    }
+//    public function show()
+//    {
+//        return view('clients.article.vue');
+//    }
+//
+//    public function all()
+//    {
+//        $articles = Article::all()->get();
+//        return $articles;
+//    }
 }

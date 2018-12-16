@@ -6,6 +6,7 @@ use App\Admin\Genaral;
 use App\Company;
 use App\Http\Requests\AdminCompanyRequest;
 use App\Http\Requests\AdminCompanyUpdateRequest;
+use App\Http\Requests\CompanyRequest;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
